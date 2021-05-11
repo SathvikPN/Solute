@@ -2,3 +2,6 @@
 
 class FileError(Exception):
     pass
+
+class DataOverflowError(Exception):
+    pass
