@@ -1,7 +1,8 @@
 from hashlib import md5
 from base64 import urlsafe_b64encode
 from cryptography.fernet import Fernet
-
+from cv2 import imread, imwrite
+from utility import string_to_binary, binary_to_string
 
 
 def encrypt_decrypt(string, password, mode='encode'):
