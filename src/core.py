@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
 """
-Least Significant Bit Steganography
----------------------------------------
-Name: LSB Steganography Application
-Author: Sathvik PN
-GitHub: https://github.com/SathvikPN/Steganography-application
+LSB Steganography Application
+- Author: Sathvik PN
+- GitHub: https://github.com/SathvikPN/Steganography-application
 """
 
 from hashlib import md5
@@ -13,8 +11,8 @@ from base64 import urlsafe_b64encode
 from cryptography.fernet import Fernet
 from cv2 import imread, imwrite
 
-from utility import string_to_binary, binary_to_string
-from custom_exceptions import DataOverflowError, FileError, PasswordError
+from .utility import string_to_binary, binary_to_string
+from .custom_exceptions import DataOverflowError, FileError, PasswordError
 
 import inspect
 
@@ -31,7 +29,7 @@ def encrypt_decrypt(string, password, mode='encode'):
 
 
 # -----------------------------------------------------------------------------------
-def encode(input_filepath, text, output_filepath, password=None):
+def encode(input_filepath, text, output_filepath, password=None, progressBar=None):
     """ Creates an encoded image based on text with password and fed input image """
     if password is None:
         # bypass raw data encryption
@@ -115,7 +113,7 @@ def encode(input_filepath, text, output_filepath, password=None):
     
 
 # -----------------------------------------------------------------------------
-def decode(input_filepath, password=None):
+def decode(input_filepath, password=None, progressBar=None):
     """ Decodes the secret data from the cover image with right password """
     result = ''
     extracted_bits = 0
