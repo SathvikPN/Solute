@@ -33,6 +33,12 @@ class UI_MainWindow():
         if file_path != '':
             self.lineEdit.setText(file_path)
 
+    
+    # To display save file dialog
+    def save_file(self):
+        output_path = QtWidgets.QFileDialog.getSaveFileName(None, "Save encoded file", '', "PNG File (*.png)")[0]
+        return output_path
+
 
 
 if __name__ == "__main__":
