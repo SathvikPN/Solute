@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
 """
-Least Significant Bit Steganography
----------------------------------------
-Name: LSB Steganography Application
-Author: Sathvik PN
-GitHub: https://github.com/SathvikPN/Steganography-application
+LSB Steganography Application
+- Author: Sathvik PN
+- GitHub: https://github.com/SathvikPN/Steganography-application
 """
 
 from hashlib import md5
