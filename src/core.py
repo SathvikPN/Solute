@@ -1,11 +1,21 @@
-# Least Significant Bit Steganography
+#!/usr/bin/python3
+
+"""
+Least Significant Bit Steganography
+---------------------------------------
+Name: LSB Steganography Application
+Author: Sathvik PN
+GitHub: https://github.com/SathvikPN/Steganography-application
+"""
 
 from hashlib import md5
 from base64 import urlsafe_b64encode
+from custom_exceptions import DataOverflowError, FileError, PasswordError
 from cryptography.fernet import Fernet
 from cv2 import imread, imwrite
 from utility import string_to_binary, binary_to_string
 from custom_exceptions import *
+import inspect
 
 # -------------------------------------------------------------------------------
 def encrypt_decrypt(string, password, mode='encode'):
@@ -156,5 +166,13 @@ def decode(input_filepath, password=None):
         except:
             raise PasswordError("Invalid password!")
 
-            
+     
 
+# ------------------------------------------------------------------------------
+if __name__=='__main__':
+    pass 
+    
+
+
+
+    
