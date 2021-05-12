@@ -29,7 +29,7 @@ def encrypt_decrypt(string, password, mode='encode'):
 
 
 # -----------------------------------------------------------------------------------
-def encode(input_filepath, text, output_filepath, password=None):
+def encode(input_filepath, text, output_filepath, password=None, progressBar=None):
     """ Creates an encoded image based on text with password and fed input image """
     if password is None:
         # bypass raw data encryption
