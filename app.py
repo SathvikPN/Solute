@@ -303,15 +303,35 @@ class UI_MainWindow():
         self.checkBox_2.stateChanged.connect(lambda: self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Normal) if self.checkBox_2.isChecked() else self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password))
 
         #Menu action
-        self.actionAbout.triggered.connect(lambda: self.displayMsg('About','Created by: Suman Adhikari\n\nGitHub: https://github.com/int-main'))
+        about_msg = """ 
+        Created by: Sathvik PN
+        GitHub: https://github.com/SathvikPN """
+        self.actionAbout.triggered.connect(lambda: self.displayMsg('About', about_msg))
 
-
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Steganography Software"))
+        self.label_4.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Step 1:</span></p></body></html>"))
+        self.label_3.setText(_translate("MainWindow", "Input Image File:"))
+        self.pushButton.setText(_translate("MainWindow", "Choose File"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600; color:#5500ff;\">Encode</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600; color:#5500ff;\">Decode</span></p></body></html>"))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Step 2:</span></p></body></html>"))
+        self.label_7.setText(_translate("MainWindow", "Enter text to hide:"))
+        self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Step 3:</span></p></body></html>"))
+        self.label_9.setText(_translate("MainWindow", "Enter Password:"))
+        self.checkBox.setText(_translate("MainWindow", "Show Password"))
+        self.label_11.setText(_translate("MainWindow", "Progress:"))
+        self.pushButton_2.setText(_translate("MainWindow", "Encode and Save"))
+        self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Step 2:</span></p></body></html>"))
+        self.label_10.setText(_translate("MainWindow", "Enter Password:"))
+        self.checkBox_2.setText(_translate("MainWindow", "Show Password"))
+        self.pushButton_3.setText(_translate("MainWindow", "Decode"))
+        self.label_13.setText(_translate("MainWindow", "Progress:"))
+        self.label_12.setText(_translate("MainWindow", "Decoded Data:"))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
 
 
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = UI_MainWindow()
-    MainWindow.show()
-    sys.exit(app.exec_())
+    pass
