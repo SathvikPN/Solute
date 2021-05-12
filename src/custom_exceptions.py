@@ -8,3 +8,6 @@ class DataOverflowError(Exception):
 
 class FileError(Exception):
     pass
+
+class PasswordError(Exception):
+    pass
