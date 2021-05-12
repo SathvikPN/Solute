@@ -6,8 +6,5 @@ class FileError(Exception):
 class DataOverflowError(Exception):
     pass
 
-class FileError(Exception):
-    pass
-
 class PasswordError(Exception):
     pass
