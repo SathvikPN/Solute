@@ -103,4 +103,58 @@ def encode(input_filepath, text, output_filepath, password=None):
     return loss_percentage
     
 
+# -----------------------------------------------------------------------------
+def decode(input_filepath, password=None):
+    """ Decodes the secret data from the cover image with right password """
+    result = ''
+    extracted_bits = 0
+    completed = False
+    number_of_bits = None
+
+    # open image 
+    img = imread(input_filepath)
+
+    if img is None:
+        raise FileError("The image file '{}' is inaccessible".format(input_filepath))
+    
+    height,width = img.shape[0],img.shape[1]  # Image dimensions
+
+    # traverse all pixels in image from left to right and top to bottom fashion
+    for i in range(height):
+        for j in range(width):
+            # Current pixel (RGB values)
+            for k in img[i,j]:
+                # extract LSB of RGB values
+                result += str(k%2)
+                extracted_bits += 1
+
+                # First 32-bits represent data size. Actual data if after that
+                if extracted_bits==32 and number_of_bits is None:
+                    number_of_bits = int(result,2)*8
+                    result = ''  # for actual data collection
+                    extracted_bits = 0
+
+                # if all required bits are extracted, mark the process as completed
+                elif extracted_bits == number_of_bits:
+                    completed = True
+                    break
+
+            if completed:
+                break
+        
+        if completed:
+            break
+
+    if password is None:
+        # data doesnot require password to unlock
+        return binary_to_string(result)
+
+    else:
+        # try to decrypt the data with the given password and return decrypted data 
+        try:
+            return encrypt_decrypt(binary_to_string(result),password,'decode')
+        except:
+            raise PasswordError("Invalid password!")
+
+            
 
