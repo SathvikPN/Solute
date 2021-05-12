@@ -83,6 +83,38 @@ class UI_MainWindow():
                     self.progressBar.setValue(0)
 
 
+    # Decode data 
+    def decode(self):
+        input_path = self.lineEdit.text()
+        password = self.lineEdit_3.text()
+        if input_path == '':
+            window_title = "ERROR - No file chosen"
+            window_text = "You must select input image file"
+            window_icon = "err"
+            self.display_msg(window_title,window_text,window_icon)
+        
+        elif password == '':
+            window_title = "ERROR - Password NOT set"
+            window_text = "Please enter a password for security"
+            window_icon = "err"
+            self.display_msg(window_title, window_text, window_icon)
+
+        else:
+            try:
+                data = core.decode(input_path, password, self.progressBar_2)
+            except core.FileError as fe:
+                self.display_msg("File Error", str(fe),"err")
+            except core.PasswordError as pe:
+                self.display_msg("Password Error", str(pe), "err")
+                self.progressBar_2.setValue(0)
+            else:
+                self.display_msg("Success","Decoded Successfully!")
+                self.plainTextEdit_2.document().setPlainText(data)
+                self.progressBar_2.setValue(0)
+
+
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
