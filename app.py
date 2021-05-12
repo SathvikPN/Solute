@@ -10,6 +10,7 @@ from src import core, utility, custom_exceptions
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 # -----------------------------------------------
 class UI_MainWindow():
 
@@ -39,6 +40,47 @@ class UI_MainWindow():
         output_path = QtWidgets.QFileDialog.getSaveFileName(None, "Save encoded file", '', "PNG File (*.png)")[0]
         return output_path
 
+
+    # Encode and Save File 
+    def encode(self):
+        input_path = self.lineEdit.text()
+        text = self.plainTextEdit.toPlainText()
+        password = self.lineEdit_2.text()
+
+        if input_path == '':
+            window_title = "ERROR - No file chosen"
+            window_text = "You must select input image file"
+            window_icon = "err"
+            self.display_msg(window_title,window_text,window_icon)
+
+        elif text == '':
+            window_title = "Text data is Empty"
+            window_text = "Please enter some text to encode..."
+            window_icon = "info"
+            self.display_msg(window_title, window_text, window_icon)
+
+        elif password == '':
+            window_title = "ERROR - Password NOT set"
+            window_text = "Please enter a password for security"
+            window_icon = "err"
+            self.display_msg(window_title, window_text, window_icon)
+        
+        else:
+            output_path = self.save_file()
+            if output_path == '':
+                self.display_msg("Operation cancelled","Operation cancelled by user!")
+            else:
+                try:
+                    loss = core.encode(input_path, text, output_path, password, self.progressBar)
+                except core.FileError as fe:
+                    self.display_msg("File Error", str(fe),"err")
+                except core.DataOverflowError as doe:
+                    self.display_msg("Data Overflow Error", str(doe), "err")
+                else:
+                    window_title = "Success"
+                    window_text = "Encoded Successfully! \n\nImage Data loss {:.4f} %".format(loss)
+                    self.display_msg(window_title, window_text)
+                    self.progressBar.setValue(0)
 
 
 if __name__ == "__main__":
