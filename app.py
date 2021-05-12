@@ -27,6 +27,11 @@ class UI_MainWindow():
         MsgBox.setIcon(ico)
         MsgBox.exec()
 
+    # Method to choose input file 
+    def get_file(self):
+        file_path = QtWidgets.QFileDialog.getOpenFileName(None, 'Open File', '', "Image files (*.jpg *.png *.bmp)")[0]
+        if file_path != '':
+            self.lineEdit.setText(file_path)
 
 
 
