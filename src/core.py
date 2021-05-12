@@ -113,7 +113,7 @@ def encode(input_filepath, text, output_filepath, password=None, progressBar=Non
     
 
 # -----------------------------------------------------------------------------
-def decode(input_filepath, password=None):
+def decode(input_filepath, password=None, progressBar=None):
     """ Decodes the secret data from the cover image with right password """
     result = ''
     extracted_bits = 0
