@@ -6,7 +6,9 @@ GitHub: https://github.com/SathvikPN
 """
 
 from src import core, utility, custom_exceptions 
+
 import inspect
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -22,9 +24,11 @@ class UI_MainWindow():
         MsgBox.setWindowTitle(title)
 
         if ico_type == 'err':
+
             ico = QtWidgets.QMessageBox.Critical
         else:
             ico = QtWidgets.QMessageBox.Information
+
 
         MsgBox.setIcon(ico)
         MsgBox.exec()
@@ -113,7 +117,9 @@ class UI_MainWindow():
                 self.plainTextEdit_2.document().setPlainText(data)
                 self.progressBar_2.setValue(0)
 
+
     def setupUI(self, MainWindow):
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(811, 575)
         MainWindow.setAutoFillBackground(False)
@@ -293,17 +299,20 @@ class UI_MainWindow():
         self.menuHelp.addAction(self.actionAbout)
         self.menubar.addAction(self.menuHelp.menuAction())
 
+
         self.retranslateUI(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         #Slots
         self.pushButton.clicked.connect(self.get_file)
+
         self.pushButton_2.clicked.connect(self.encode)
         self.pushButton_3.clicked.connect(self.decode)
         self.checkBox.stateChanged.connect(lambda: self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Normal) if self.checkBox.isChecked() else self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password))
         self.checkBox_2.stateChanged.connect(lambda: self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Normal) if self.checkBox_2.isChecked() else self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password))
 
         #Menu action
+
         about_msg = inspect.cleandoc(""" 
         Least Significant Bit Algorithm based Steganography Software.
 
@@ -318,6 +327,7 @@ class UI_MainWindow():
     def retranslateUI(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Steganography Software (Data Security)"))
+
         self.label_4.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Step 1:</span></p></body></html>"))
         self.label_3.setText(_translate("MainWindow", "Input Image File:"))
         self.pushButton.setText(_translate("MainWindow", "Choose File"))
@@ -344,7 +354,9 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+
     ui = UI_MainWindow()
     ui.setupUI(MainWindow)
+
     MainWindow.show()
     sys.exit(app.exec_())
