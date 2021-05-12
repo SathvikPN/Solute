@@ -308,6 +308,7 @@ class UI_MainWindow():
         GitHub: https://github.com/SathvikPN """
         self.actionAbout.triggered.connect(lambda: self.displayMsg('About', about_msg))
 
+    
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Steganography Software"))
