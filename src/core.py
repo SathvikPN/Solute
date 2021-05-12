@@ -10,11 +10,12 @@ GitHub: https://github.com/SathvikPN/Steganography-application
 
 from hashlib import md5
 from base64 import urlsafe_b64encode
-from custom_exceptions import DataOverflowError, FileError, PasswordError
 from cryptography.fernet import Fernet
 from cv2 import imread, imwrite
+
 from utility import string_to_binary, binary_to_string
-from custom_exceptions import *
+from custom_exceptions import DataOverflowError, FileError, PasswordError
+
 import inspect
 
 # -------------------------------------------------------------------------------
