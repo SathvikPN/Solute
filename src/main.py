@@ -14,9 +14,9 @@ from cryptography.fernet import Fernet
 from cv2 import imread, imwrite
 import inspect
 
-from utility import string_to_binary, binary_to_string
-from custom_exceptions import DataOverflowError, FileError, PasswordError
-from core import *
+from .utility import string_to_binary, binary_to_string
+from .custom_exceptions import DataOverflowError, FileError, PasswordError
+from .core import *
 
 
 def command_line_interface():
