@@ -292,6 +292,19 @@ class UI_MainWindow():
         self.menuHelp.addAction(self.actionAbout)
         self.menubar.addAction(self.menuHelp.menuAction())
 
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        #Slots
+        self.pushButton.clicked.connect(self.getFile)
+        self.pushButton_2.clicked.connect(self.encode)
+        self.pushButton_3.clicked.connect(self.decode)
+        self.checkBox.stateChanged.connect(lambda: self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Normal) if self.checkBox.isChecked() else self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password))
+        self.checkBox_2.stateChanged.connect(lambda: self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Normal) if self.checkBox_2.isChecked() else self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password))
+
+        #Menu action
+        self.actionAbout.triggered.connect(lambda: self.displayMsg('About','Created by: Suman Adhikari\n\nGitHub: https://github.com/int-main'))
+
 
 
 
