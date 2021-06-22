@@ -1,10 +1,19 @@
-## Steganography Application
+> 🚀 Solute_v1.0 is now available for Windows OS
+
+&nbsp;
+
+## Solute Application
 
 Simplified steganography tool for your data privacy and security.
 - Encrypt your text data securely inside an image.
 - Decrypt your cover image with appropriate password only.
 
 Not just encrypts the data, but also hides the presence of data.
+
+
+
+
+
 
 &nbsp;
 &nbsp;
