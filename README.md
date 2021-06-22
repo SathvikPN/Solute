@@ -31,6 +31,4 @@ Feel free to check [issues page](https://github.com/SathvikPN/Steganography-appl
 &nbsp;
 
 
-## License
-
-[MIT](https://github.com/SathvikPN/Steganography-application/blob/main/LICENSE)
+<p align="center">Created with ❤ by <a href="https://www.linkedin.com/in/sathvik-p-n/">SathvikPN</a></p>
