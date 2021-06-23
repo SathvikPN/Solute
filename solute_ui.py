@@ -22,6 +22,18 @@ class SoluteApp(tk.Tk):
         self.minsize(width=650, height=450)
 
         self.title("Solute")
+        self.protocol("WM_DELETE_WINDOW", self.exit)
+    
+
+    def exit(self):
+        # Exit Confirmation Message box
+        TITLE = "Exit"
+        MESSAGE = "Are you sure want to exit?"
+        
+        sure = messagebox.askyesno(TITLE, MESSAGE )
+        if sure is True:
+            self.destroy()
+
 
     def run(self):
         self.mainloop()
