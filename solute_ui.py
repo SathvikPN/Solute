@@ -127,6 +127,37 @@ class Workspace(tk.Frame):
         self.step1_btn.grid(row=2, column=4, sticky='w')
 
         
+        # ENCODER Section -------------------------------------
+        encode_header = tk.Label(text="ENCODE")
+        encode_header.config(font=14)
+        encode_header.grid(row=3, column=0, columnspan=3)
+
+        step2 = tk.Label(text="Step 2")
+        step2.grid(row=4, column=0)
+
+        step2_info = tk.Label(text="Enter text to hide")
+        step2_info.grid(row=5, column=0)
+
+        encode_data = tk.Text()
+        encode_data.grid(row=6, rowspan=4, column=0, columnspan=3)
+
+        step3 = tk.Label(text="Step 3")
+        step3.grid(row=10, column=0)
+
+        step3_info = tk.Label(text="Enter Password")
+        step3_info.grid(row=11, column=0)
+
+        pwd_entry = tk.Entry()
+        pwd_entry.config(show='*')
+        pwd_entry.grid(row=11, column=1, columnspan=2)
+
+        # ROW 12 : ADD PROGRESS BAR
+
+        encode_btn = tk.Button(text="Encode and Save")
+        encode_btn.config(font=10)
+        encode_btn.grid(row=13, rowspan=2, column=1)
+
+
 
 
     def image_selector(self):
