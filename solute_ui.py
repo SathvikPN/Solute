@@ -48,7 +48,7 @@ class SoluteApp(tk.Tk):
 
 
         # Tagline section -------------------------------------
-        TAG_LINE = "Simplified steganography tool for your data privacy"
+        TAG_LINE = "--- Simplified steganography tool for your data privacy ---"
         tagline = tk.Label(self)
         tagline.config(text=TAG_LINE)
         # tagline.config(font=('Verdana',12))
@@ -150,6 +150,7 @@ class Workspace(tk.Frame):
         step3.grid(row=10, column=0, sticky='w', **PADDINGS)
 
         step3_info = tk.Label(text="Enter Password")
+    
         step3_info.grid(row=11, column=0, sticky='w', **PADDINGS)
 
         pwd_enc = tk.Entry()
