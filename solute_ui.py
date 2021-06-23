@@ -113,18 +113,15 @@ class Workspace(tk.Frame):
         # btn_start.grid(row=2, column=0, rowspan=13, columnspan=6)
 
         # IMAGE SELECTOR SECTION ------------------------------
-        step1 = tk.Label(text="Step 1")
-        step1.grid(row=2, column=1, sticky='e')
-
-        step1_info = tk.Label(text="Input Image")
-        step1_info.grid(row=2, column=2)
+        step1 = tk.Label(text="Step 1: Input Image")
+        step1.grid(row=2, column=1)
 
         self.step1_path = tk.Entry()
-        self.step1_path.grid(row=2, column=3, sticky='nsew')
+        self.step1_path.grid(row=2, column=2, columnspan=2, sticky='ew')
 
         self.step1_btn = tk.Button(text="Select File")
         self.step1_btn.config(command=self.image_selector)
-        self.step1_btn.grid(row=2, column=4, sticky='w')
+        self.step1_btn.grid(row=2, column=4)
 
         
         # ENCODER Section -------------------------------------
@@ -209,7 +206,7 @@ class Workspace(tk.Frame):
 if __name__=='__main__':
     DEBUG = True
     if DEBUG is True:
-        DECODED_DATA = "DEBUG Mode Active. This is sample data"
+        DECODED_DATA = "DEBUG Mode Active."
         TEXT_BOX_HEIGHT = 8
     app = SoluteApp()
     app.run()
