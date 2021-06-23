@@ -167,6 +167,7 @@ class Workspace(tk.Frame):
         step2_dec_info.grid(row=5, column=3)
 
         pwd_dec = tk.Entry()
+        pwd_dec.config(show='*')
         pwd_dec.grid(row=5, column=4, columnspan=2)
 
         decode_btn = tk.Button(text="Decode")
@@ -208,5 +209,7 @@ if __name__=='__main__':
     if DEBUG is True:
         DECODED_DATA = "DEBUG Mode Active."
         TEXT_BOX_HEIGHT = 8
+        
+
     app = SoluteApp()
     app.run()
