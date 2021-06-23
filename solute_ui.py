@@ -132,14 +132,14 @@ class Workspace(tk.Frame):
         encode_header.config(font=14)
         encode_header.grid(row=3, column=0, columnspan=3)
 
-        step2 = tk.Label(text="Step 2")
-        step2.grid(row=4, column=0)
+        step2_enc = tk.Label(text="Step 2")
+        step2_enc.grid(row=4, column=0)
 
-        step2_info = tk.Label(text="Enter text to hide")
-        step2_info.grid(row=5, column=0)
+        step2_enc_info = tk.Label(text="Enter text to hide")
+        step2_enc_info.grid(row=5, column=0)
 
-        encode_data = tk.Text()
-        encode_data.grid(row=6, rowspan=4, column=0, columnspan=3)
+        encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        encode_data.grid(row=6,column=0, rowspan=4, columnspan=3) #   
 
         step3 = tk.Label(text="Step 3")
         step3.grid(row=10, column=0)
@@ -147,15 +147,43 @@ class Workspace(tk.Frame):
         step3_info = tk.Label(text="Enter Password")
         step3_info.grid(row=11, column=0)
 
-        pwd_entry = tk.Entry()
-        pwd_entry.config(show='*')
-        pwd_entry.grid(row=11, column=1, columnspan=2)
+        pwd_enc = tk.Entry()
+        pwd_enc.config(show='*')
+        pwd_enc.grid(row=11, column=1, columnspan=2)
 
-        # ROW 12 : ADD PROGRESS BAR
+        # ROW:12 COLUMN:(0,1,2) --> ADD PROGRESS BAR
 
         encode_btn = tk.Button(text="Encode and Save")
         encode_btn.config(font=10)
         encode_btn.grid(row=13, rowspan=2, column=1)
+
+
+        # DECODER Section -------------------------------------
+        decode_header = tk.Label(text="DECODE")
+        decode_header.config(font=14)
+        decode_header.grid(row=3, column=3, columnspan=3)
+
+        step2_dec = tk.Label(text="Step 2")
+        step2_dec.grid(row=4, column=3)
+
+        step2_dec_info = tk.Label(text="Enter Password")
+        step2_dec_info.grid(row=5, column=3)
+
+        pwd_dec = tk.Entry()
+        pwd_dec.grid(row=5, column=4, columnspan=2)
+
+        decode_btn = tk.Button(text="Decode")
+        decode_btn.grid(row=6, rowspan=2, column=4)
+
+        # ROW:8 COLUMNS:(3,4,5) ---> ADD PROGRESS BAR
+
+        dec_info = tk.Label(text="Decoded data")
+        dec_info.grid(row=9, column=3)
+
+        dec_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        dec_data.insert('1.0', DECODED_DATA)
+        dec_data.grid(row=10, column=3, rowspan=4,columnspan=3 ) # 
+
 
 
 
@@ -179,5 +207,9 @@ class Workspace(tk.Frame):
 
 # APP TRIGGER -------------------------------------------------
 if __name__=='__main__':
+    DEBUG = True
+    if DEBUG is True:
+        DECODED_DATA = "DEBUG Mode Active. This is sample data"
+        TEXT_BOX_HEIGHT = 8
     app = SoluteApp()
     app.run()
