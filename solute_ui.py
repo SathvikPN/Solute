@@ -1,4 +1,4 @@
-"""Solute - a steganography software tool
+""" Solute - a steganography software tool 
 
 Author: SathvikPN
 Project link: https://github.com/SathvikPN/Solute
@@ -28,9 +28,9 @@ class SoluteApp(tk.Tk):
         # Layout Configuration --------------------------------
         DIMENSIONS = {"Rows":16, "Columns":6}
         for r in range(DIMENSIONS['Rows']):
-            self.grid_rowconfigure(r, weight=1)
+            self.grid_rowconfigure(r, weight=1, minsize=2)
         for c in range(DIMENSIONS['Columns']):
-            self.grid_columnconfigure(c, weight=1)
+            self.grid_columnconfigure(c, weight=1, minsize=2)
 
 
         # Header Section --------------------------------------
@@ -107,11 +107,42 @@ class Workspace(tk.Frame):
     """ Workspace of the Application """
     def __init__(self, parent, controller):
         super().__init__(parent)
-
         self.controller = controller
 
-        btn_start = tk.Label(text="Center of Workspace")
-        btn_start.grid(row=2, column=0, rowspan=13, columnspan=6)
+        # btn_start = tk.Label(text="Center of Workspace")
+        # btn_start.grid(row=2, column=0, rowspan=13, columnspan=6)
+
+        # IMAGE SELECTOR SECTION ------------------------------
+        step1 = tk.Label(text="Step 1")
+        step1.grid(row=2, column=1, sticky='e')
+
+        step1_info = tk.Label(text="Input Image")
+        step1_info.grid(row=2, column=2)
+
+        self.step1_path = tk.Entry()
+        self.step1_path.grid(row=2, column=3, sticky='nsew')
+
+        self.step1_btn = tk.Button(text="Select File")
+        self.step1_btn.config(command=self.image_selector)
+        self.step1_btn.grid(row=2, column=4, sticky='w')
+
+        
+
+
+    def image_selector(self):
+        FILE_TYPES = ([('Image Files',('.png','.jpg','.jpeg'))])
+        img_path = filedialog.askopenfilename(filetypes = FILE_TYPES)
+        if not img_path:
+            messagebox.showerror("No Image found", "Please select an image")
+        else:
+            self.step1_path.insert('0',img_path)
+    
+
+
+
+        
+
+
 
 
 
