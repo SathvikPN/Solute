@@ -4,7 +4,7 @@ LSB Steganography Application
 - GitHub: https://github.com/SathvikPN/Steganography-application
 """
 
-
+DEBUG = True
 
 from hashlib import md5
 from base64 import urlsafe_b64encode
@@ -51,4 +51,23 @@ class InvalidMode(Exception):
 
 
 if __name__=='__main__':
-    pass
+    
+    # Quick Tests -------------------------------------------------------------
+    def test_encrypt_decrypt():
+        print("Testing encrypt_decrypt()...", end=' ')
+        DATA = "Hi"
+        PASSWORD = '123'
+        encrypted_data = encrypt_decrypt(DATA, PASSWORD, 'encrypt')
+        decrypted_data = encrypt_decrypt(encrypted_data,PASSWORD, 'decrypt')
+        if decrypted_data == DATA:
+            print("OK")
+        else:
+            print("FAILED")
+
+    # Execute Tests in DEBUG MODE ---------------------------------------------
+    if DEBUG is True:
+        test_encrypt_decrypt()
+
+
+
+        
