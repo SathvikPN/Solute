@@ -86,9 +86,8 @@ def encode_img(input_img, text, output_img, password=None):
     except:
         raise ReadImageError(f"Image file {input_img} is inaccessible.")
     
-    # img_data = np.asarray(img)
     img_data = np.array(img)
-    img_data.setflags(write="WRITABLE")
+
     # Image dimensions
     width, height = img.size
 
@@ -150,12 +149,91 @@ def encode_img(input_img, text, output_img, password=None):
     # loss_percentage = (modified_bits/encoding_capacity)*100
     # return loss_percentage
 
+
+
+
+# DECODER Section -------------------------------------------------------------
+
+def decode_img(input_img, password=None):
+    """ Extracts encoded text from input image with right password
+
+    Args:
+        input_img: Path of input image
+        password: string key to decrypt the encrypted data
     
+    Returns:
+        data_string
+    """
+    extracted_bits = ""
+    extracted_bits_count = 0
+
+    # length of data-bits exist in first 32 bits of cover image
+    data_bits_length = None 
+    # updates after 32 bits of cover image is read
+
+    decode_complete = False
+
+    # read cover image 
+    try:
+        img = Image.open(input_img)
+    except:
+        raise ReadImageError(f"Image file {input_img} is inaccessible.")
+    
+    img_data = np.array(img)
+
+    # Image dimensions
+    width, height = img.size
+
+    # traverse image pixels
+    for x in range(height):
+        for y in range(width):
+
+            # current pixel RGB value
+            for i in img[x,y]:
+                # extract LSB bit of each RGB value
+                LSB_bit = str(i%2)
+                extracted_bits += LSB_bit
+                extracted_bits_count += 1
+
+                # First 32-bits represent data size. Actual data start 33rd bit onwards
+                if extracted_bits_count==32 and data_bits_length is None:
+                    data_length = int(extracted_bits, base=2) 
+                    data_bits_length = data_length*8  # each character uses 8 bits
+
+                    # Reset for actual data collection
+                    extracted_bits = ""  
+                    extracted_bits_count = 0
+
+                # if all required bits are extracted, mark the process as completed
+                elif extracted_bits_count == data_bits_length:
+                    decode_complete = True
+                    break
+            
+            if decode_complete:
+                break
+        
+        if decode_complete:
+            break
+    
+
+    extracted_data = binary_to_string(extracted_bits)
+    if password is None:
+        # return extracted data as it is.
+        return extracted_data
+    else:
+        try:
+            return encrypt_decrypt(extracted_data, password, 'decrypt')
+        except:
+            raise PasswordError("Invalid password. Please check.")
+
+
 
 
 # Utility Functions -----------------------------------------------------------
+
 def string_to_binary(data_string):
     """ Returns Binary Representation of string """
+
     return ''.join((bin(ord(c))[2:]).zfill(8) for c in data_string)
 
     # Explicit breakdown-------------
@@ -165,9 +243,14 @@ def string_to_binary(data_string):
     #     binary_value = binary_representation[2:]
     #     binary_value.zfill(8)
 
+
 def binary_to_string(bin_string):
     """ Returns String representation of binary values string """
+
     return ''.join(chr(int(bin_string[i:i+8],2)) for i in range(len(bin_string))[::8])
+
+
+
 
 # Custom Exceptions -----------------------------------------------------------
 class InvalidMode(Exception):
@@ -178,6 +261,11 @@ class ReadImageError(Exception):
 
 class DataOverflowError(Exception):
     pass
+
+class PasswordError(Exception):
+    pass
+
+
 
 
 if __name__=='__main__':
