@@ -327,7 +327,7 @@ if __name__=='__main__':
         print()
         test_encrypt_decrypt()
         test_encode_img()
-        # test_decode_img()
+        test_decode_img()
 
 
 
