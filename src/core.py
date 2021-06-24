@@ -31,6 +31,7 @@ def encrypt_decrypt(data_string, password, mode='encrypt'):
 
     cipher = Fernet(key)
 
+
     if mode=='encrypt':
         data_bytes = data_string.encode()
         encrypted_bytes = cipher.encrypt(data_bytes)
@@ -97,7 +98,7 @@ def encode_img(input_img, text, output_img, password=None):
     encoding_capacity = total_pixels*3 
 
     # total bits in the data that needs to be hidden including 32 bits for specifying length of data
-    data_bits = 32 + len(data)*8  # Multiplication has higher precedence than addition
+    data_bits = len(data_length) + len(string_to_binary(data))  # Multiplication has higher precedence than addition
     # Each character is stored using eight bits of information, giving a total number of 256 different characters
 
     if data_bits > encoding_capacity:
@@ -223,7 +224,7 @@ def decode_img(input_img, password=None):
         return extracted_data
     else:
         try:
-            data =  encrypt_decrypt(extracted_data, password, 'decrypt')
+            data = encrypt_decrypt(extracted_data, password, 'decrypt')
         except:
             raise PasswordError("INVALID Password! Please check.")
         return data
@@ -305,9 +306,9 @@ if __name__=='__main__':
             print("FAILED")
             print("    - Image NOT Modified.")
         else:
-            print("OK")
+            print("Partially OK")
             print("    - New Modified Image created. ")
-            print()
+            print("    - Check needed if encoded correctly. ")
 
     def test_decode_img():
         print("[3] Testing decode_img()...", end=' ')
