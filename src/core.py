@@ -49,7 +49,6 @@ def encrypt_decrypt(data_string, password, mode='encrypt'):
         raise InvalidMode(InvalidModeError)
 
 
-
 # ENCODER section -------------------------------------------------------------
 
 def encode_img(input_img, text, output_img, password=None):
@@ -170,7 +169,6 @@ def binary_to_string(bin_string):
     """ Returns String representation of binary values string """
     return ''.join(chr(int(bin_string[i:i+8],2)) for i in range(len(bin_string))[::8])
 
-
 # Custom Exceptions -----------------------------------------------------------
 class InvalidMode(Exception):
     pass
@@ -229,6 +227,7 @@ if __name__=='__main__':
         print()
         test_encrypt_decrypt()
         test_encode_img()
+
 
 
 
