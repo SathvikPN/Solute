@@ -87,7 +87,7 @@ def encode_img(input_img, text, output_img, password=None):
 def string_to_binary(data_string):
     """ Returns Binary Representation of string """
     return ''.join((bin(ord(c))[2:]).zfill(8) for c in data_string)
-    
+
     # Explicit breakdown-------------
     # for c in string:
     #     ordinal = ord(c)
@@ -95,6 +95,9 @@ def string_to_binary(data_string):
     #     binary_value = binary_representation[2:]
     #     binary_value.zfill(8)
 
+def binary_to_string(bin_string):
+    """ Returns String representation of binary values string """
+    return ''.join(chr(int(bin_string[i:i+8],2)) for i in range(len(bin_string))[::8])
 
 
 # Custom Exceptions -----------------------------------------------------------
