@@ -189,7 +189,7 @@ def decode_img(input_img, password=None):
         for y in range(width):
 
             # current pixel RGB value
-            for i in img[x,y]:
+            for i in img_data[x,y]:
                 # extract LSB bit of each RGB value
                 LSB_bit = str(i%2)
                 extracted_bits += LSB_bit
@@ -222,10 +222,10 @@ def decode_img(input_img, password=None):
         return extracted_data
     else:
         try:
-            return encrypt_decrypt(extracted_data, password, 'decrypt')
+            data =  encrypt_decrypt(extracted_data, password, 'decrypt')
         except:
-            raise PasswordError("Invalid password. Please check.")
-
+            raise PasswordError("INVALID Password! Please check.")
+        return data
 
 
 
@@ -288,7 +288,8 @@ if __name__=='__main__':
         print("[2] Testing encode_img()...", end=' ')
         INPUT_IMAGE = r"assets\image.png"
         OUTPUT_IMAGE = "assets\enc_image.png"
-        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE)  
+        PASSWORD = '123'
+        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE, PASSWORD)  
         try: 
             inp = Image.open(INPUT_IMAGE)     
             inp_data = np.array(inp)
@@ -307,6 +308,17 @@ if __name__=='__main__':
             print("    - New Modified Image created. ")
             print()
 
+    def test_decode_img():
+        print("[3] Testing decode_img()...", end=' ')
+        INPUT_IMAGE = "assets\enc_image.png"
+        PASSWORD = '123'
+        EXPECTED_DATA = "Hello"
+        RETURNED_DATA = decode_img(INPUT_IMAGE, PASSWORD)
+        if EXPECTED_DATA == RETURNED_DATA:
+            print("OK")
+            print("    - Returns original data encoded. ")
+        else:
+            print("FAILED")
 
 
     # Execute Tests in DEBUG MODE ---------------------------------------------
@@ -315,6 +327,7 @@ if __name__=='__main__':
         print()
         test_encrypt_decrypt()
         test_encode_img()
+        # test_decode_img()
 
 
 
