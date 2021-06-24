@@ -51,16 +51,4 @@ class InvalidMode(Exception):
 
 
 if __name__=='__main__':
-    if DEBUG is True:
-        def test_encrypt_decrypt():
-            print("Testing encrypt_decrypt()...", end=' ')
-            DATA = "Hi"
-            PASSWORD = '123'
-            encrypted_data = encrypt_decrypt(DATA, PASSWORD, 'encrypt')
-            decrypted_data = encrypt_decrypt(encrypted_data,PASSWORD, 'decrypt')
-            if decrypted_data == DATA:
-                print("OK")
-            else:
-                print("FAILED")
-
-        test_encrypt_decrypt()
+    pass
