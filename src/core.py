@@ -111,8 +111,7 @@ def encode_img(input_img, text, output_img, password=None):
     for x in range(height):
         for y in range(width):
 
-            # Current pixel
-            pixel = img_data[x,y]
+            # Current pixel img_data[x,y]
 
             # each pixel have 3 LSB bits to hide data
             for i in range(3):
@@ -126,12 +125,12 @@ def encode_img(input_img, text, output_img, password=None):
                 # Donot write into every LSB but only that differs with data
                 # Proper count of modified bits
                 # Pixel[i] = 0 to 255
-                if d=='0' and pixel[i]%2==1:
-                    pixel[i] -= 1  # reduce value by 1 --> LSB:1-->0
+                if d=='0' and img_data[x,y][i]%2==1:
+                    img_data[x,y][i] -= 1  # reduce value by 1 --> LSB:1-->0
                     modified_bits += 1
 
-                elif d=='1' and pixel[i]%2==0:
-                    pixel[i] += 1  # LSB 0 --> 1 
+                elif d=='1' and img_data[x,y][i]%2==0:
+                    img_data[x,y][i] += 1  # LSB 0 --> 1 
                     modified_bits += 1
             # ---------------------------------------------------------------
             if encode_complete:
@@ -291,7 +290,7 @@ if __name__=='__main__':
         INPUT_IMAGE = r"assets\image.png"
         OUTPUT_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
-        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE, PASSWORD)  
+        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE)  
         try: 
             inp = Image.open(INPUT_IMAGE)     
             inp_data = np.array(inp)
@@ -315,12 +314,15 @@ if __name__=='__main__':
         INPUT_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
         EXPECTED_DATA = "Hello"
-        RETURNED_DATA = decode_img(INPUT_IMAGE, PASSWORD)
+        RETURNED_DATA = decode_img(INPUT_IMAGE)
         if EXPECTED_DATA == RETURNED_DATA:
             print("OK")
             print("    - Returns original data encoded. ")
         else:
             print("FAILED")
+            print(f'EXPECTED_DATA: {EXPECTED_DATA} ')
+            print(f'RETURNED_DATA: {RETURNED_DATA[:50]} ')
+            
 
 
     # Execute Tests in DEBUG MODE ---------------------------------------------
