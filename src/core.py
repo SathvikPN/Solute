@@ -197,6 +197,25 @@ if __name__=='__main__':
             print("FAILED")
         print()
 
+    def test_encode_img():
+        print("Testing encode_img()")
+        INPUT_IMAGE = r"assets\image.png"
+        OUTPUT_IMAGE = "assets\enc_image.png"
+        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE)  
+        try: 
+            inp = Image.open(INPUT_IMAGE)     
+            inp_data = np.array(inp)
+            op = Image.open(OUTPUT_IMAGE)
+            op_data = np.array(op)
+        except:
+            print('ERROR with READ/WRITE...')
+            return
+        
+        if (inp_data == op_data).all():
+            print("FAILED...")
+        else:
+            print("New Modified Image created. OK...")
+            print()
 
 
 
@@ -205,7 +224,7 @@ if __name__=='__main__':
         print("[DEBUG Mode ON] ------------------------------------------------")
         print()
         # test_encrypt_decrypt()
-        # test_encode_img()
+        test_encode_img()
 
 
 
