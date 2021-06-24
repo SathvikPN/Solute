@@ -193,12 +193,13 @@ if __name__=='__main__':
         decrypted_data = encrypt_decrypt(encrypted_data,PASSWORD, 'decrypt')
         if decrypted_data == DATA:
             print("OK")
+            print("    - Data successfully retrieved")
         else:
             print("FAILED")
         print()
 
     def test_encode_img():
-        print("Testing encode_img()")
+        print("[2] Testing encode_img()...", end=' ')
         INPUT_IMAGE = r"assets\image.png"
         OUTPUT_IMAGE = "assets\enc_image.png"
         encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE)  
@@ -208,13 +209,16 @@ if __name__=='__main__':
             op = Image.open(OUTPUT_IMAGE)
             op_data = np.array(op)
         except:
-            print('ERROR with READ/WRITE...')
+            print("FAILED")
+            print('    - ERROR with READ/WRITE')
             return
         
         if (inp_data == op_data).all():
-            print("FAILED...")
+            print("FAILED")
+            print("    - Image NOT Modified.")
         else:
-            print("New Modified Image created. OK...")
+            print("OK")
+            print("    - New Modified Image created. ")
             print()
 
 
@@ -223,7 +227,7 @@ if __name__=='__main__':
     if DEBUG is True:
         print("[DEBUG Mode ON] ------------------------------------------------")
         print()
-        # test_encrypt_decrypt()
+        test_encrypt_decrypt()
         test_encode_img()
 
 
