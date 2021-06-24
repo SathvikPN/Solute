@@ -74,8 +74,9 @@ def encode_img(input_img, text, output_img, password=None):
     # Process Encrypted data
 
     # 32-bit info about length of data to be encoded
-    data_length = bin(len(data))[2:]  # eg: '0b11101'
-    data_length.zfill(32)
+    data_length = bin(len(data))[2:]  # eg: '0b11101' --> '11101'
+    data_length = data_length.zfill(32)
+    
 
     # Encode data length info with actual data and create an iterator
     bin_data = iter(data_length + string_to_binary(data))
