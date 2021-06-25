@@ -132,4 +132,4 @@ dmypy.json
 # Project specific files
 tempCodeRunnerFile.py
 run.py
-data/
+data/enc_image.py
