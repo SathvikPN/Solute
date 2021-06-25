@@ -184,16 +184,18 @@ def decode_img(input_img, password=None):
 
     # Image dimensions
     width, height = img.size[0], img.size[1]
-    # width, height = img.size[1], img.size[0]
+    
 
     # traverse image pixels
     for x in range(height):
         for y in range(width):
 
             # current pixel RGB value
-            for i in img_data[x,y]:
+            pixel = img_data[x][y]
+
+            for i in range(3):
                 # extract LSB bit of each RGB value
-                LSB_bit = str(i%2)
+                LSB_bit = str(pixel[i]&1)
                 extracted_bits += LSB_bit
                 extracted_bits_count += 1
 
