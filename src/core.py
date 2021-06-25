@@ -291,13 +291,13 @@ if __name__=='__main__':
     def test_encode_img():
         print("[2] Testing encode_img()...", end=' ')
         INPUT_IMAGE = r"assets\image.png"
-        OUTPUT_IMAGE = "assets\enc_image.png"
+        ENCODED_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
-        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE)  
+        encode_img(INPUT_IMAGE, "Hello",ENCODED_IMAGE, PASSWORD)  
         try: 
             inp = Image.open(INPUT_IMAGE)     
             inp_data = np.array(inp)
-            op = Image.open(OUTPUT_IMAGE)
+            op = Image.open(ENCODED_IMAGE)
             op_data = np.array(op)
         except:
             print("FAILED")
@@ -314,10 +314,10 @@ if __name__=='__main__':
 
     def test_decode_img():
         print("[3] Testing decode_img()...", end=' ')
-        INPUT_IMAGE = "assets\enc_image.png"
+        ENCODED_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
         EXPECTED_DATA = "Hello"
-        RETURNED_DATA = decode_img(INPUT_IMAGE)
+        RETURNED_DATA = decode_img(ENCODED_IMAGE, PASSWORD)
         if EXPECTED_DATA == RETURNED_DATA:
             print("OK")
             print("    - Returns original data encoded. ")
