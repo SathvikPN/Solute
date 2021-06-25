@@ -105,14 +105,14 @@ def encode_img(input_img, text, output_img, password=None):
         raise DataOverflowError("The data size is too big to fit in this image!")
 
     encode_complete = False
-    modified_bits = 0
+    # modified_bits = 0
 
     # traverse cover image pixels left to right and top to bottom fashion
     for x in range(height):
         for y in range(width):
 
             # Current pixel img_data[x,y]
-
+            pixel = img_data[x][y]
             # each pixel have 3 LSB bits to hide data
             for i in range(3):
                 try:
@@ -125,13 +125,13 @@ def encode_img(input_img, text, output_img, password=None):
                 # Donot write into every LSB but only that differs with data
                 # Proper count of modified bits
                 # Pixel[i] = 0 to 255
-                if d=='0' and img_data[x,y][i]%2==1:
-                    img_data[x,y][i] -= 1  # reduce value by 1 --> LSB:1-->0
-                    modified_bits += 1
+                if d=='0':
+                    pixel[i] &= ~(1)  # reduce value by 1 --> LSB:1-->0
+                    # modified_bits += 1
 
-                elif d=='1' and img_data[x,y][i]%2==0:
-                    img_data[x,y][i] += 1  # LSB 0 --> 1 
-                    modified_bits += 1
+                elif d=='1':
+                    pixel[i] |= 1  # LSB 0 --> 1 
+                    # modified_bits += 1
             # ---------------------------------------------------------------
             if encode_complete:
                 break
@@ -183,7 +183,8 @@ def decode_img(input_img, password=None):
     img_data = np.array(img)
 
     # Image dimensions
-    width, height = img.size
+    width, height = img.size[0], img.size[1]
+    # width, height = img.size[1], img.size[0]
 
     # traverse image pixels
     for x in range(height):
@@ -242,7 +243,7 @@ def string_to_binary(data_string):
     #     ordinal = ord(c)
     #     binary_representation = bin(ordinal)
     #     binary_value = binary_representation[2:]
-    #     binary_value.zfill(8)
+    #     binary_form = binary_value.zfill(8)
 
 
 def binary_to_string(bin_string):
