@@ -31,6 +31,7 @@ def encrypt_decrypt(data_string, password, mode='encrypt'):
 
     cipher = Fernet(key)
 
+
     if mode=='encrypt':
         data_bytes = data_string.encode()
         encrypted_bytes = cipher.encrypt(data_bytes)
@@ -74,8 +75,9 @@ def encode_img(input_img, text, output_img, password=None):
     # Process Encrypted data
 
     # 32-bit info about length of data to be encoded
-    data_length = bin(len(data))[2:]  # eg: '0b11101'
-    data_length.zfill(32)
+    data_length = bin(len(data))[2:]  # eg: '0b11101' --> '11101'
+    data_length = data_length.zfill(32)
+    
 
     # Encode data length info with actual data and create an iterator
     bin_data = iter(data_length + string_to_binary(data))
@@ -96,22 +98,21 @@ def encode_img(input_img, text, output_img, password=None):
     encoding_capacity = total_pixels*3 
 
     # total bits in the data that needs to be hidden including 32 bits for specifying length of data
-    data_bits = 32 + len(data)*8  # Multiplication has higher precedence than addition
+    data_bits = len(data_length) + len(string_to_binary(data))  # Multiplication has higher precedence than addition
     # Each character is stored using eight bits of information, giving a total number of 256 different characters
 
     if data_bits > encoding_capacity:
         raise DataOverflowError("The data size is too big to fit in this image!")
 
     encode_complete = False
-    modified_bits = 0
+    # modified_bits = 0
 
     # traverse cover image pixels left to right and top to bottom fashion
     for x in range(height):
         for y in range(width):
 
-            # Current pixel
-            pixel = img_data[x,y]
-
+            # Current pixel img_data[x,y]
+            pixel = img_data[x][y]
             # each pixel have 3 LSB bits to hide data
             for i in range(3):
                 try:
@@ -124,13 +125,13 @@ def encode_img(input_img, text, output_img, password=None):
                 # Donot write into every LSB but only that differs with data
                 # Proper count of modified bits
                 # Pixel[i] = 0 to 255
-                if d=='0' and pixel[i]%2==1:
-                    pixel[i] -= 1  # reduce value by 1 --> LSB:1-->0
-                    modified_bits += 1
+                if d=='0':
+                    pixel[i] &= ~(1)  # reduce value by 1 --> LSB:1-->0
+                    # modified_bits += 1
 
-                elif d=='1' and pixel[i]%2==0:
-                    pixel[i] += 1  # LSB 0 --> 1 
-                    modified_bits += 1
+                elif d=='1':
+                    pixel[i] |= 1  # LSB 0 --> 1 
+                    # modified_bits += 1
             # ---------------------------------------------------------------
             if encode_complete:
                 break
@@ -182,16 +183,19 @@ def decode_img(input_img, password=None):
     img_data = np.array(img)
 
     # Image dimensions
-    width, height = img.size
+    width, height = img.size[0], img.size[1]
+    
 
     # traverse image pixels
     for x in range(height):
         for y in range(width):
 
             # current pixel RGB value
-            for i in img_data[x,y]:
+            pixel = img_data[x][y]
+
+            for i in range(3):
                 # extract LSB bit of each RGB value
-                LSB_bit = str(i%2)
+                LSB_bit = str(pixel[i]&1)
                 extracted_bits += LSB_bit
                 extracted_bits_count += 1
 
@@ -222,7 +226,7 @@ def decode_img(input_img, password=None):
         return extracted_data
     else:
         try:
-            data =  encrypt_decrypt(extracted_data, password, 'decrypt')
+            data = encrypt_decrypt(extracted_data, password, 'decrypt')
         except:
             raise PasswordError("INVALID Password! Please check.")
         return data
@@ -241,7 +245,7 @@ def string_to_binary(data_string):
     #     ordinal = ord(c)
     #     binary_representation = bin(ordinal)
     #     binary_value = binary_representation[2:]
-    #     binary_value.zfill(8)
+    #     binary_form = binary_value.zfill(8)
 
 
 def binary_to_string(bin_string):
@@ -287,13 +291,13 @@ if __name__=='__main__':
     def test_encode_img():
         print("[2] Testing encode_img()...", end=' ')
         INPUT_IMAGE = r"assets\image.png"
-        OUTPUT_IMAGE = "assets\enc_image.png"
+        ENCODED_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
-        encode_img(INPUT_IMAGE, "Hello",OUTPUT_IMAGE, PASSWORD)  
+        encode_img(INPUT_IMAGE, "Hello",ENCODED_IMAGE, PASSWORD)  
         try: 
             inp = Image.open(INPUT_IMAGE)     
             inp_data = np.array(inp)
-            op = Image.open(OUTPUT_IMAGE)
+            op = Image.open(ENCODED_IMAGE)
             op_data = np.array(op)
         except:
             print("FAILED")
@@ -304,21 +308,24 @@ if __name__=='__main__':
             print("FAILED")
             print("    - Image NOT Modified.")
         else:
-            print("OK")
+            print("Partially OK")
             print("    - New Modified Image created. ")
-            print()
+            print("    - Check needed if encoded correctly. ")
 
     def test_decode_img():
         print("[3] Testing decode_img()...", end=' ')
-        INPUT_IMAGE = "assets\enc_image.png"
+        ENCODED_IMAGE = "assets\enc_image.png"
         PASSWORD = '123'
         EXPECTED_DATA = "Hello"
-        RETURNED_DATA = decode_img(INPUT_IMAGE, PASSWORD)
+        RETURNED_DATA = decode_img(ENCODED_IMAGE, PASSWORD)
         if EXPECTED_DATA == RETURNED_DATA:
             print("OK")
             print("    - Returns original data encoded. ")
         else:
             print("FAILED")
+            print(f'EXPECTED_DATA: {EXPECTED_DATA} ')
+            print(f'RETURNED_DATA: {RETURNED_DATA[:50]} ')
+            
 
 
     # Execute Tests in DEBUG MODE ---------------------------------------------
