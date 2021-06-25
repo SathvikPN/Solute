@@ -123,8 +123,11 @@ def encode_img(input_img, text, output_img, password=None):
         encoded_img = Image.fromarray(img_data)
     except:
         raise WriteImageError("Error writing into new image")
-        
-    encoded_img.save(output_img)
+    
+    try:
+        encoded_img.save(output_img)
+    except:
+        raise SaveImageError("Error saving file")
     return None
 
 
@@ -228,6 +231,9 @@ class PasswordError(Exception):
     pass
 
 class WriteImageError(Exception):
+    pass
+
+class SaveImageError(Exception):
     pass
 
 
