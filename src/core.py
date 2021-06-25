@@ -238,8 +238,8 @@ class WriteImageError(Exception):
 if __name__=='__main__':
     DATA = "Hello"
     PASSWORD = '123'
-    ORIGINAL_IMAGE = r"assets\image.png"
-    ENCODED_IMAGE = "assets\enc_image.png"
+    ORIGINAL_IMAGE = r"data\image.png"
+    ENCODED_IMAGE = r"data\enc_image.png"
     
 
     # Quick Tests -------------------------------------------------------------
