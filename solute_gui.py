@@ -8,7 +8,7 @@ Project link: https://github.com/SathvikPN/Solute
 # Imports -----------------------------------------------------
 
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import Menu, messagebox
 from tkinter import filedialog
 from tkinter import ttk
 from tkinter import font
@@ -43,6 +43,12 @@ class SoluteApp(tk.Tk):
         for c in range(DIMENSIONS['Columns']):
             self.grid_columnconfigure(c, weight=1, minsize=2)
 
+        # Menubar Section -------------------------------------
+        menubar = Menu(self)
+        file = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Help", menu=file)
+        file.add_command(label="About", command=self.developer_info)
+        self.config(menu=menubar)
 
         # Header Section --------------------------------------
         HEADER = "SOLUTE"
@@ -95,6 +101,12 @@ class SoluteApp(tk.Tk):
         """
         frame = self.frames[page_name]
         frame.tkraise()
+
+    def developer_info(self):
+        messagebox.showinfo(
+            "Developer Info",
+            "[Name] SathvikPN\n[GitHub] https://github.com/SathvikPN/Solute"
+        )
 
 
     def exit(self):
