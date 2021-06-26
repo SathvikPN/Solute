@@ -209,7 +209,7 @@ class Workspace(tk.Frame):
         FILE_TYPES = ([('Image Files',('.png','.jpg','.jpeg'))])
         self.img_path = filedialog.askopenfilename(filetypes = FILE_TYPES)
         if not self.img_path:
-            messagebox.showerror("No Image found", "Please select an image")
+            messagebox.showwarning("No Image found", "Please select an image")
         else:
             self.step1_path.insert('0',self.img_path)
             return self.step1_path
@@ -227,35 +227,57 @@ class Workspace(tk.Frame):
                 self.enc_img,
                 self.pwd_enc.get()
             )
+            messagebox.showinfo(
+                title="Encode SUCCESS",
+                message="Encoded image generated successfully.\nYay!"
+            )
         
         except core.DataOverflowError:
             messagebox.showwarning(
                 title="Data Overflow",
                 message="Data size is too big to fit inside this image"
             )
-        messagebox.showinfo(
-            title="Encoding Successful",
-            message="Successfully created the Encoded Image.\nYay!"
-        )
+
+        except core.ReadImageError:
+            messagebox.showerror(
+                title="No Image Selected",
+                message="Please select a source image to hide data."
+
+            )
+
+
     
     def decode(self):
         # self.pwd_dec = tk.Entry()
-        try:
-            self.dec_data.insert(
-                "1.0", 
-                core.decode_img(self.step1_path.get(), self.pwd_dec.get())
-            )
+        if not self.step1_path.get().endswith('.png'):
             messagebox.showinfo(
-                title="Decode Success",
-                message="Successfully extracted all encoded data from image.\nYay!"
+                "Incorrect Image",
+                "Please select the valid image to decode\nPNG format image."
             )
+            self.step1_path.delete('0','end')
+        else:
+            try:
+                self.dec_data.insert(
+                    "1.0", 
+                    core.decode_img(self.step1_path.get(), self.pwd_dec.get())
+                )
+                messagebox.showinfo(
+                    title="Decode SUCCESS",
+                    message="Data extracted successfully from the image.\nYay!"
+                )
 
-        except core.PasswordError:
-            messagebox.showerror(
-                title="Incorrect Password",
-                message="Please ensure correct image and correct password is entered."
-            )
-            self.pwd_dec.delete('0', 'end')
+            except core.PasswordError:
+                messagebox.showerror(
+                    title="Incorrect Credentials",
+                    message="Please ensure correct image and correct password is entered."
+                )
+                self.pwd_dec.delete('0', 'end')
+
+            except core.ReadImageError:
+                messagebox.showerror(
+                    title="No Image Selected",
+                    message="Please select an image to decode"
+                )
 
 
 
