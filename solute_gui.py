@@ -231,6 +231,10 @@ class Workspace(tk.Frame):
                 title="Encode SUCCESS",
                 message="Encoded image generated successfully.\nYay!"
             )
+
+            self.step1_path.delete('0', 'end')
+            self.encode_data.delete("1.0", "end")
+            self.pwd_enc.delete('0','end')
         
         except core.DataOverflowError:
             messagebox.showwarning(
@@ -249,6 +253,7 @@ class Workspace(tk.Frame):
     
     def decode(self):
         # self.pwd_dec = tk.Entry()
+        self.dec_data.delete("1.0","end")
         if not self.step1_path.get().endswith('.png'):
             messagebox.showinfo(
                 "Incorrect Image",
