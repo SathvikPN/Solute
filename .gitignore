@@ -130,5 +130,7 @@ dmypy.json
 
 
 # Project specific files
+tempCodeRunnerFile.py
 run.py
-notes.md
+data/
+!data/image.png
