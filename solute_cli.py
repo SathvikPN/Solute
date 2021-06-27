@@ -20,7 +20,7 @@ def command_line_interface():
     file_info = inspect.cleandoc("""
     ***********************************************************************************
     Solute Application v2.0
-        Description: Hide text inside an image with additional encryption layer for text.
+        Description: Hide text inside an image with additional text encryption layer.
         
     """)
     print(file_info, end='\n\n')
@@ -29,8 +29,8 @@ def command_line_interface():
     # -----------------------------------------------------------------------------------
     menu = inspect.cleandoc("""
     ----- MENU -----
-    [1]. Encrypt
-    [2]. Decrypt
+    [1]. ENCODE (encrypt data - generate encoded image)
+    [2]. DECODE (decrypt data - from encoded image)
 
     Select your choice(1/2) : 
     """)
@@ -63,7 +63,7 @@ def command_line_interface():
         img = input('Enter cover image name (path with extension): ')
         data = data_canvas()
         pwd = input('Enter password: ')
-        enc_img = input('Enter output image name (path with extension): ')
+        enc_img = input('Enter path for output image (.png extension): ')
 
         try:
             core.encode_img(input_img=img, text=data, output_img=enc_img, password=pwd)
@@ -100,13 +100,22 @@ def command_line_interface():
         print(inspect.cleandoc(f"""
         -------------------------------------------------
         ENCODING SUCCESSFUL
+        Generated the encoded image successfully.
         -------------------------------------------------
         """))
 
     
     elif choice == '2':
-        img_file = input('Enter encoded_image path with extension: ')
+        img_file = input('Enter encoded_image path (with image extension): ')
         pwd = input('Enter password: ')
+        if not img_file.endswith('.png'):
+            print(inspect.cleandoc(f"""
+            -------------------------------------------------
+            ERROR: {core.ReadImageError}
+            DETAILS: Valid cover image will be in PNG format (*.png)
+            -------------------------------------------------
+            """))
+            exit()            
 
         try:
             decoded_data = core.decode_img(input_img=img_file, password=pwd)
