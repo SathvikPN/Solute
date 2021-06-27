@@ -29,6 +29,9 @@ class SoluteApp(tk.Tk):
         # Root page configuration -----------------------------
         self.geometry('800x600')
         self.minsize(width=650, height=550)
+        
+        self.style = ttk.Style(self)
+        self.style.theme_use('winnative')
 
         self.title("Solute")
         self.protocol("WM_DELETE_WINDOW", self.exit)
@@ -43,8 +46,10 @@ class SoluteApp(tk.Tk):
         for c in range(DIMENSIONS['Columns']):
             self.grid_columnconfigure(c, weight=1, minsize=2)
 
+            
         # Icon section ----------------------------------------
         self.iconbitmap('assets/favicon_solute.ico')
+
 
         # Menubar Section -------------------------------------
         menubar = Menu(self)
@@ -52,6 +57,7 @@ class SoluteApp(tk.Tk):
         menubar.add_cascade(label="Help", menu=file)
         file.add_command(label="About", command=self.developer_info)
         self.config(menu=menubar)
+
 
         # Header Section --------------------------------------
         HEADER = "SOLUTE"
