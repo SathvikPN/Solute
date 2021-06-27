@@ -1,3 +1,5 @@
+> 🚀 Solute_v2.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+
 ![Logo](assets/logo_solute.png)
 
 &nbsp;
