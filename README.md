@@ -49,19 +49,24 @@ For Graphical User Interface
 &nbsp;
 
 ## Application Previews
----
+
 Currently supports Windows OS.
 
 ![Desktop version](assets/solute_v2.0_preview.png)
 
+&nbsp;
+
 ### CLI Encoder Preview
----
+
 ![CLI Encoder](assets/cli_encoder_preview.png)
 
+&nbsp;
+
 ### CLI Decoder Preview
----
+
 ![CLI Decoder](assets/cli_decoder_preview.png)
 
+&nbsp;
 
 ## Contributing
 
@@ -72,8 +77,10 @@ Feel free to check [issues page](https://github.com/SathvikPN/Steganography-appl
 
 &nbsp;
 
-This project is licensed under [MIT License](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/SathvikPN/Solute?style=flat-square)](https://github.com/SathvikPN/Solute/blob/main/LICENSE)
 
 &nbsp;
 
 <p align="center">Created with ❤ by <a href="https://www.linkedin.com/in/sathvik-p-n/">SathvikPN</a></p>
+
+
