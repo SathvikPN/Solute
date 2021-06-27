@@ -43,6 +43,9 @@ class SoluteApp(tk.Tk):
         for c in range(DIMENSIONS['Columns']):
             self.grid_columnconfigure(c, weight=1, minsize=2)
 
+        # Icon section ----------------------------------------
+        self.iconbitmap('assets/favicon_solute.ico')
+
         # Menubar Section -------------------------------------
         menubar = Menu(self)
         file = Menu(menubar, tearoff=0)
