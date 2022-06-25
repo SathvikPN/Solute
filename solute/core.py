@@ -128,4 +128,45 @@ def encode_img(input_img:str, text:str, output_img:str, password:str='') -> None
     encoded_img.save(output_img)
 
 
+# DECODER Section -------------------------------------------------------------
+def decode_img(image:str, password:str='') -> str:
+    """Extracts encoded text from the image and decrypts it with the password 
+
+    Parameters:
+        image: path to image
+        password: key string to decrypt encoded text
+
+    Returns:
+        data_string
+    """
+    pass 
+
+
+def extract_bits(image_path:str, bits_count:int) -> str:
+    extracted_bits = []
+    try:
+        img = Image.open(image_path)
+    except:
+        raise ReadImageError(f"Image file {image_path} is inaccessible.")
+    
+    img_data = np.array(img)
+
+    # Image dimensions
+    width, height = img.size 
+
+    for x in range(height):
+        for y in range(width):
+            # current pixel RGB value
+            pixel = img_data[x][y]
+
+            # extract LSB bit of each RGB value
+            for i in range(3):
+                LSB_bit = str(pixel[i]&1)
+                extracted_bits += LSB_bit
+                if len(extracted_bits) == bits_count:
+                    return ''.join(extracted_bits)
+
+
+
+
 
