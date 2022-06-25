@@ -2,3 +2,6 @@
 
 class InvalidModeError(Exception):
     pass
+
+class ReadImageError(Exception):
+    pass
