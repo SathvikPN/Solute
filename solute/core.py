@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 from PIL import Image
 import numpy as np
 
-from exceptions import InvalidModeError, ReadImageError, DataOverflowError
+from exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError
 from utility import string_to_binary, binary_to_string
 
 
@@ -90,4 +90,42 @@ def encode_img(input_img:str, text:str, output_img:str, password:str='') -> None
 
     if data_bits > encoding_capacity:
         raise DataOverflowError("Data size too big to fit in this image!")
+
+    encode_complete = False
+    for x in range(height):
+        for y in range(width):
+            # reference of a mutable object 
+            pixel = img_data[x][y]
+
+            # each pixel has 3 LSB bits to hide data 
+            for i in range(3):
+                try:
+                    d = next(bin_data)
+                except StopIteration:
+                    # no more binary data. objective accomplished
+                    encode_complete = True
+                    break
+
+                # modify image bit according to data bit
+                if d=='0':
+                    pixel[i] &= ~(1)  # reset LSB bit
+
+                elif d=='1':
+                    pixel[i] |= 1  # set LSB bit
+
+            # ---------------------------------------------------------------
+            if encode_complete:
+                break
+        # -----------------------------------------------------------
+        if encode_complete:
+            break             
+    
+    try:
+        encoded_img = Image.fromarray(img_data)
+    except:
+        raise WriteImageError("Error writing into new image")
+        
+    # encoded_img.save(output_img)
+
+
 

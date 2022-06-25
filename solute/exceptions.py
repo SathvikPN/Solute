@@ -8,3 +8,6 @@ class ReadImageError(Exception):
 
 class DataOverflowError(Exception):
     pass
+
+class WriteImageError(Exception):
+    pass
