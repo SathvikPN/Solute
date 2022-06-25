@@ -4,6 +4,8 @@ from cryptography.fernet import Fernet
 from PIL import Image
 import numpy as np
 
+from exceptions import InvalidModeError
+
 # ENCRYPT-DECRYPT Text Data ---------------------------------------------------
 def encrypt_decrypt(data_string:str, password:str, mode='encrypt'):
     """Encrypts OR Decrypts data_string w.r.t password based on mode specified 
@@ -39,4 +41,5 @@ def encrypt_decrypt(data_string:str, password:str, mode='encrypt'):
         return decrypted_data_string
 
     else:
-        # error
+        error_msg = "Invalid mode for encrypt_decrypt() \nexpected {'encrypt', 'decrypt'}"
+        raise InvalidModeError(error_msg)
