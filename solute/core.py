@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 from PIL import Image
 import numpy as np
 
-from exceptions import InvalidModeError
+from exceptions import InvalidModeError, ReadImageError, DataOverflowError
 from utility import string_to_binary, binary_to_string
 
 
@@ -76,4 +76,18 @@ def encode_img(input_img:str, text:str, output_img:str, password:str='') -> None
     try:
         img = Image.open(input_img)
     except:
-        # error
+        raise ReadImageError(f"Image file {input_img} is inaccessible.")
+    
+    img_data = np.array(img)
+    width, height = img.size
+    total_pixels = height*width
+
+    # each pixel of RGB --> 3 bytes --> 3 LSB bits --> 3 bits space per pixel to hide data
+    encoding_capacity = 3*total_pixels
+
+    # total bits in the data that needs to be hidden including 32 bits for specifying length of data
+    data_bits = len(data_length) + len(string_to_binary(data))
+
+    if data_bits > encoding_capacity:
+        raise DataOverflowError("Data size too big to fit in this image!")
+

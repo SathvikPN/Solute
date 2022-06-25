@@ -5,3 +5,6 @@ class InvalidModeError(Exception):
 
 class ReadImageError(Exception):
     pass
+
+class DataOverflowError(Exception):
+    pass
