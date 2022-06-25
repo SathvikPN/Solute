@@ -125,7 +125,7 @@ def encode_img(input_img:str, text:str, output_img:str, password:str='') -> None
     except:
         raise WriteImageError("Error writing into new image")
         
-    # encoded_img.save(output_img)
+    encoded_img.save(output_img)
 
 
 
