@@ -187,7 +187,7 @@ def decode_img(image_path:str, password:str='') -> str:
     binary_values = ''.join(extracted_bits)
     extracted_data = binary_to_string(binary_values)
 
-    if password is '':
+    if password == '':
         return extracted_data
     else:
         try:
