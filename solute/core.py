@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 from PIL import Image
 import numpy as np
 
-from exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError
+from exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError, CorruptDataError, PasswordError
 from utility import string_to_binary, binary_to_string
 
 
@@ -129,7 +129,7 @@ def encode_img(input_img:str, text:str, output_img:str, password:str='') -> None
 
 
 # DECODER Section -------------------------------------------------------------
-def decode_img(image:str, password:str='') -> str:
+def decode_img(image_path:str, password:str='') -> str:
     """Extracts encoded text from the image and decrypts it with the password 
 
     Parameters:
@@ -139,11 +139,9 @@ def decode_img(image:str, password:str='') -> str:
     Returns:
         data_string
     """
-    pass 
-
-
-def extract_bits(image_path:str, bits_count:int) -> str:
     extracted_bits = []
+    data_bits_length = None # length info
+
     try:
         img = Image.open(image_path)
     except:
@@ -154,8 +152,10 @@ def extract_bits(image_path:str, bits_count:int) -> str:
     # Image dimensions
     width, height = img.size 
 
+    decode_complete = False 
     for x in range(height):
         for y in range(width):
+
             # current pixel RGB value
             pixel = img_data[x][y]
 
@@ -163,8 +163,38 @@ def extract_bits(image_path:str, bits_count:int) -> str:
             for i in range(3):
                 LSB_bit = str(pixel[i]&1)
                 extracted_bits += LSB_bit
-                if len(extracted_bits) == bits_count:
-                    return ''.join(extracted_bits)
+
+                if len(extracted_bits) == 32 and data_bits_length is None:
+                    data_length = int(''.join(extracted_bits), base=2)
+                    data_bits_length = data_length * 8 
+                    # each character uses 8 bits
+
+                    # Reset for actual data collection
+                    extracted_bits = [] 
+                
+                # if all required bits are extracted, mark the process as completed
+                elif len(extracted_bits) == data_bits_length:
+                    decode_complete = True 
+                    break 
+            
+            if decode_complete:
+                break 
+        if decode_complete:
+            break
+    if not decode_complete:
+        raise CorruptDataError(f"Mismatched metadata and actual data. {image_path} is Corrupt!")
+    
+    binary_values = ''.join(extracted_bits)
+    extracted_data = binary_to_string(binary_values)
+
+    if password is '':
+        return extracted_data
+    else:
+        try:
+            data = encrypt_decrypt(extracted_data, password, mode='decrypt')
+        except:
+            raise PasswordError("Invalid Password. Please check.")
+        return data 
 
 
 
