@@ -11,3 +11,9 @@ class DataOverflowError(Exception):
 
 class WriteImageError(Exception):
     pass
+
+class CorruptDataError(Exception):
+    pass 
+
+class PasswordError(Exception):
+    pass 
