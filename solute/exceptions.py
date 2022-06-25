@@ -17,3 +17,6 @@ class CorruptDataError(Exception):
 
 class PasswordError(Exception):
     pass 
+
+class SaveImageError(Exception):
+    pass 
