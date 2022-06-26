@@ -44,7 +44,9 @@ class SoluteApp(tk.Tk):
 
             
         # Icon section ----------------------------------------
-        self.iconbitmap('assets/favicon_solute.ico')
+        # self.iconbitmap('assets/favicon_solute.ico')
+        
+
 
 
         # Menubar Section -------------------------------------
@@ -92,7 +94,7 @@ class SoluteApp(tk.Tk):
 
 
         # Footer section --------------------------------------
-        FOOTER = "Developed by [ SathvikPN ]"
+        FOOTER = "Developed by SathvikPN"
         footer = tk.Label(self)
         footer.config(text=FOOTER)
         footer.grid(row=15, column=0, columnspan=6, sticky='s')
