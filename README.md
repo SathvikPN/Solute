@@ -1,4 +1,4 @@
-> 🚀 Solute is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+> 🚀 Solute_v2.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
 
 
 &nbsp;
@@ -15,7 +15,7 @@ Not just encrypt the data, but also hide the presence of data.
 &nbsp;
 
 
-## Run Locally
+### Run Locally
 
 Clone the project
 
@@ -49,12 +49,14 @@ optional arguments:
 ```
 
 &nbsp;
----
 
-Install as a package
+### Install as Package
+
 ```bash
 pip install .
 ```
+> Package Documentation: [Link](https://sathvikpn.github.io/Solute/)
+
 
 ## Application Previews
 
