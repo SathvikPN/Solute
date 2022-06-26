@@ -1,5 +1,7 @@
 > Solute Package Documentation: [https://sathvikpn.github.io/Solute/](https://sathvikpn.github.io/Solute/)
 
+> 🚀 Solute_v3.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v3.0/solute_v3.exe)
+
 
 &nbsp;
 
