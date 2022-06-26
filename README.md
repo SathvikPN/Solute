@@ -1,6 +1,5 @@
-> 🚀 Solute_v2.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+> 🚀 Solute is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
 
-![Logo](assets/logo_solute.png)
 
 &nbsp;
 
@@ -36,25 +35,32 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
-For Command Line Interface
-
+Run application
 ```bash
-  py solute_cli.py
+python3 solute 
 ```
 
-For Graphical User Interface
-
 ```bash
-  py solute_gui.py
+usage: solute [-h] [-m MODE]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -m MODE     Interface Mode: CLI or GUI (default: cli)
 ```
 
 &nbsp;
+---
+
+Install as a package
+```bash
+pip install .
+```
 
 ## Application Previews
 
 Currently supports Windows OS.
 
-![Desktop version](assets/solute_v2.0_preview.png)
+![Desktop version](assets/solute_GUI_preview.png)
 
 &nbsp;
 
@@ -80,6 +86,8 @@ Feel free to check [issues page](https://github.com/SathvikPN/Steganography-appl
 &nbsp;
 
 [![GitHub license](https://img.shields.io/github/license/SathvikPN/Solute?style=flat-square)](https://github.com/SathvikPN/Solute/blob/main/LICENSE)
+
+![GitHub stars](https://img.shields.io/github/stars/SathvikPN/Solute?style=social)
 
 &nbsp;
 

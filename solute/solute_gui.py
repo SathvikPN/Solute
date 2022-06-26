@@ -1,10 +1,3 @@
-""" Solute - a steganography software tool 
-
-Author: SathvikPN
-Project link: https://github.com/SathvikPN/Solute
-"""
-
-
 # Imports -----------------------------------------------------
 
 import tkinter as tk
@@ -13,7 +6,10 @@ from tkinter import filedialog
 from tkinter import ttk
 from tkinter import font
 
-from src import core
+try:
+    import core
+except ImportError:
+    from solute import core
 # -------------------------------------------------------------
 
 # Options 
@@ -48,7 +44,9 @@ class SoluteApp(tk.Tk):
 
             
         # Icon section ----------------------------------------
-        self.iconbitmap('assets/favicon_solute.ico')
+        # self.iconbitmap('assets/favicon_solute.ico')
+        
+
 
 
         # Menubar Section -------------------------------------
@@ -96,7 +94,7 @@ class SoluteApp(tk.Tk):
 
 
         # Footer section --------------------------------------
-        FOOTER = "Developed by [ SathvikPN ]"
+        FOOTER = "Developed by SathvikPN"
         footer = tk.Label(self)
         footer.config(text=FOOTER)
         footer.grid(row=15, column=0, columnspan=6, sticky='s')
@@ -305,12 +303,13 @@ class Workspace(tk.Frame):
                     message="Please select an image to decode"
                 )
 
-
+def graphical_user_interface():
+    app = SoluteApp()
+    app.run()
 
 
 
 
 # APP TRIGGER -------------------------------------------------
 if __name__=='__main__':
-    app = SoluteApp()
-    app.run()
+    graphical_user_interface()

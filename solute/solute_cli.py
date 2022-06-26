@@ -1,25 +1,16 @@
-""" Solute App - Command Line Interface
-
-LSB Steganography Application
-- Author: Sathvik PN
-- GitHub: https://github.com/SathvikPN/Steganography-application
-"""
-
-from src import core
+try:
+    import core
+except ImportError:
+    from solute import core 
 import inspect
 
-from hashlib import md5
-from base64 import urlsafe_b64encode
-from cryptography.fernet import Fernet
-from PIL import Image
-import numpy as np
 
 def command_line_interface():
-    """ Minimal Command Line Interface for the appliction """
+    """ Command Line Interface for the appliction """
 
     file_info = inspect.cleandoc("""
     ***********************************************************************************
-    Solute Application v2.0
+    Solute Application
         Description: Hide text inside an image with additional text encryption layer.
         
     """)
@@ -118,7 +109,7 @@ def command_line_interface():
             exit()            
 
         try:
-            decoded_data = core.decode_img(input_img=img_file, password=pwd)
+            decoded_data = core.decode_img(image_path=img_file, password=pwd)
 
         except core.ReadImageError:
             print(inspect.cleandoc(f"""
@@ -149,8 +140,5 @@ Decoded Data:
     else:
         print("INVALID choice.")
 
-
-
-# Driver Code -----------------------------------------------------------------
-if __name__=='__main__':
+if __name__=="__main__":
     command_line_interface()
