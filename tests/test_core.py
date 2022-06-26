@@ -1,13 +1,5 @@
 import pytest 
-
-# resolve relative import issues at windows 
-import sys, os.path
-solute_pkg = (os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-+ '/solute/')
-sys.path.append(solute_pkg)
-import core 
-import exceptions
-import utility
+from solute import core, exceptions, utility
 
 DATA = "Hello 123 App testing"
 PASSWORD = "pwd@22"
