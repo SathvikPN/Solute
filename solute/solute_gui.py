@@ -301,12 +301,13 @@ class Workspace(tk.Frame):
                     message="Please select an image to decode"
                 )
 
-
+def graphical_user_interface():
+    app = SoluteApp()
+    app.run()
 
 
 
 
 # APP TRIGGER -------------------------------------------------
 if __name__=='__main__':
-    app = SoluteApp()
-    app.run()
+    graphical_user_interface()
