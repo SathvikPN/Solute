@@ -1,6 +1,3 @@
-> 🚀 Solute_v2.0 desktop app is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
-
-
 > Solute Package Documentation: [https://sathvikpn.github.io/Solute/](https://sathvikpn.github.io/Solute/)
 
 
