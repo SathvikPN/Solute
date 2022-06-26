@@ -1,11 +1,11 @@
 try:
-    import solute_cli 
-    import solute_gui 
-    import exceptions 
+    from solute_cli import *
+    from solute_gui import *
+    from exceptions import *
 except ImportError:
-    import solute.solute_cli 
-    import solute.solute_gui
-    import solute.exceptions
+    from solute.solute_cli import *
+    from solute.solute_gui import *
+    from solute.exceptions import *
 
 
 def run(mode:str='cli') -> None:
@@ -17,8 +17,8 @@ def run(mode:str='cli') -> None:
             'gui' --> graphical-user-interface
     """
     if mode=='cli':
-        solute_cli.command_line_interface()
+        command_line_interface()
     elif mode=='gui':
-        solute_gui.graphical_user_interface()
+        graphical_user_interface()
     else:
-        raise exceptions.InvalidModeError("Modes = {'cli', 'gui'}")
+        raise InvalidModeError("Modes = {'cli', 'gui'}")
