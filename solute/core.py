@@ -4,8 +4,12 @@ from cryptography.fernet import Fernet
 from PIL import Image
 import numpy as np
 
-from exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError, CorruptDataError, PasswordError
-from utility import string_to_binary, binary_to_string
+try:
+    from exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError, CorruptDataError, PasswordError
+    from utility import string_to_binary, binary_to_string
+except ModuleNotFoundError:
+    from solute.exceptions import InvalidModeError, ReadImageError, DataOverflowError, WriteImageError, CorruptDataError, PasswordError
+    from solute.utility import string_to_binary, binary_to_string
 
 
 # ENCRYPT-DECRYPT Text Data ---------------------------------------------------
