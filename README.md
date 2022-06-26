@@ -1,6 +1,5 @@
-> 🚀 Solute_v2.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+> 🚀 Solute is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
 
-![Logo](assets/logo_solute.png)
 
 &nbsp;
 
@@ -36,16 +35,18 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
-For Command Line Interface
-
 ```bash
-  py solute_cli.py
+usage: solute [-h] [-m MODE]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -m MODE     Interface Mode: CLI or GUI (default: cli)
 ```
 
-For Graphical User Interface
+Run with preferred interface
 
 ```bash
-  py solute_gui.py
+python3 solute 
 ```
 
 &nbsp;
@@ -54,7 +55,7 @@ For Graphical User Interface
 
 Currently supports Windows OS.
 
-![Desktop version](assets/solute_v2.0_preview.png)
+![Desktop version](assets/solute_GUI_preview.png)
 
 &nbsp;
 
