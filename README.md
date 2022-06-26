@@ -35,6 +35,11 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
+Run application
+```bash
+python3 solute 
+```
+
 ```bash
 usage: solute [-h] [-m MODE]
 
@@ -43,13 +48,13 @@ optional arguments:
   -m MODE     Interface Mode: CLI or GUI (default: cli)
 ```
 
-Run with preferred interface
-
-```bash
-python3 solute 
-```
-
 &nbsp;
+---
+
+Install as a package
+```bash
+pip install .
+```
 
 ## Application Previews
 
@@ -81,6 +86,8 @@ Feel free to check [issues page](https://github.com/SathvikPN/Steganography-appl
 &nbsp;
 
 [![GitHub license](https://img.shields.io/github/license/SathvikPN/Solute?style=flat-square)](https://github.com/SathvikPN/Solute/blob/main/LICENSE)
+
+![GitHub stars](https://img.shields.io/github/stars/SathvikPN/Solute?style=social)
 
 &nbsp;
 
