@@ -1,4 +1,7 @@
-> 🚀 Solute_v2.0 is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+> 🚀 Solute_v2.0 desktop app is live. Yay! [Download](https://github.com/SathvikPN/Solute/releases/download/v2.0/Solute_v2.0.zip) 
+
+
+> Solute Package Documentation: [https://sathvikpn.github.io/Solute/](https://sathvikpn.github.io/Solute/)
 
 
 &nbsp;
@@ -35,7 +38,12 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
-Run application
+Optional: Run tests
+```bash
+python3 -m pytest -v
+```
+
+## Run application
 ```bash
 python3 solute 
 ```
@@ -55,7 +63,18 @@ optional arguments:
 ```bash
 pip install .
 ```
-> Package Documentation: [Link](https://sathvikpn.github.io/Solute/)
+> Package Documentation: [https://sathvikpn.github.io/Solute/](https://sathvikpn.github.io/Solute/)
+
+&nbsp;
+
+### Update Docs
+Development utility: For any changes in package source code, reflect it in docs pages.
+```bash
+make docs
+```
+
+&nbsp;
+&nbsp;
 
 
 ## Application Previews
@@ -89,7 +108,10 @@ Feel free to check [issues page](https://github.com/SathvikPN/Steganography-appl
 
 [![GitHub license](https://img.shields.io/github/license/SathvikPN/Solute?style=flat-square)](https://github.com/SathvikPN/Solute/blob/main/LICENSE)
 
+![GitHub issues](https://img.shields.io/github/issues/SathvikPN/Solute?style=flat-square)
+
 ![GitHub stars](https://img.shields.io/github/stars/SathvikPN/Solute?style=social)
+
 
 &nbsp;
 
