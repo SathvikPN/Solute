@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>solute.solute_gui API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>solute.solute_gui</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Imports -----------------------------------------------------
+
+import tkinter as tk
+from tkinter import Menu, messagebox
+from tkinter import filedialog
+from tkinter import ttk
+from tkinter import font
+
+try:
+    import core
+except ImportError:
+    from solute import core
+# -------------------------------------------------------------
+
+# Options 
+TEXT_BOX_HEIGHT = 8
+PADDINGS = {&#39;padx&#39;:10, &#39;pady&#39;:10}
+
+class SoluteApp(tk.Tk):
+    &#34;&#34;&#34; Root Window of application &#34;&#34;&#34;
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Root page configuration -----------------------------
+        self.geometry(&#39;800x600&#39;)
+        self.minsize(width=650, height=550)
+        
+        self.style = ttk.Style(self)
+        self.style.theme_use(&#39;winnative&#39;)
+
+        self.title(&#34;Solute&#34;)
+        self.protocol(&#34;WM_DELETE_WINDOW&#34;, self.exit)
+
+
+        # Layout Configuration --------------------------------
+        DIMENSIONS = {&#34;Rows&#34;:16, &#34;Columns&#34;:6}
+        for r in range(DIMENSIONS[&#39;Rows&#39;]):
+            if r==2 or r==3:
+                self.grid_rowconfigure(r, weight=1, pad=30)
+            self.grid_rowconfigure(r, weight=1, minsize=2)
+        for c in range(DIMENSIONS[&#39;Columns&#39;]):
+            self.grid_columnconfigure(c, weight=1, minsize=2)
+
+            
+        # Icon section ----------------------------------------
+        self.iconbitmap(&#39;assets/favicon_solute.ico&#39;)
+
+
+        # Menubar Section -------------------------------------
+        menubar = Menu(self)
+        file = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label=&#34;Help&#34;, menu=file)
+        file.add_command(label=&#34;About&#34;, command=self.developer_info)
+        self.config(menu=menubar)
+
+
+        # Header Section --------------------------------------
+        HEADER = &#34;SOLUTE&#34;
+        header = tk.Label(self)
+        header.config(text=HEADER)
+        header.config(font=(&#39;Verdana&#39;,16))
+        header.config(pady=1)
+        header.grid(row=0, column=0, columnspan=6, sticky=&#39;nsew&#39;)
+
+
+        # Tagline section -------------------------------------
+        TAG_LINE = &#34;--- Simplified steganography tool for your data privacy ---&#34;
+        tagline = tk.Label(self)
+        tagline.config(text=TAG_LINE)
+        # tagline.config(font=(&#39;Verdana&#39;,12))
+        tagline.grid(row=1, column=0, columnspan=6, sticky=&#39;n&#39;)
+         
+        
+        # Workspace Area --------------------------------------
+        # Configure container inside root window 
+        # Container frame serves pages
+        container = tk.Frame(self)
+        container.grid(row=2, column=0, rowspan=13, columnspan=6)
+
+        self.frames = {}
+        self.pages = [Workspace]
+        for F in self.pages:    
+            # IF_CASE: F=Workspace() ==&gt; page_name=F.__class__.__name__
+            # THIS_CASE: F = Workspace
+            page_name = F.__name__ 
+            frame = F(parent=container, controller=self)
+            self.frames[page_name] = frame
+
+        # Display Starting page in container
+        self.show_frame(&#34;Workspace&#34;)
+
+
+        # Footer section --------------------------------------
+        FOOTER = &#34;Developed by [ SathvikPN ]&#34;
+        footer = tk.Label(self)
+        footer.config(text=FOOTER)
+        footer.grid(row=15, column=0, columnspan=6, sticky=&#39;s&#39;)
+
+
+    def show_frame(self, page_name):
+        &#34;&#34;&#34; Display passed page 
+        
+        Multiple pages are stacked at same container
+        raises passed page to top of stack which is displayed
+        &#34;&#34;&#34;
+        frame = self.frames[page_name]
+        frame.tkraise()
+
+    def developer_info(self):
+        messagebox.showinfo(
+            &#34;Developer Info&#34;,
+            &#34;[Name] SathvikPN\n[GitHub] https://github.com/SathvikPN/Solute&#34;
+        )
+
+
+    def exit(self):
+        # Exit Confirmation Message box
+        TITLE = &#34;Exit&#34;
+        MESSAGE = &#34;Are you sure want to exit?&#34;
+
+        sure = messagebox.askyesno(TITLE, MESSAGE )
+        if sure is True:
+            self.destroy()
+
+
+    def run(self):
+        self.mainloop()
+
+
+
+# Workspace Area ----------------------------------------------
+
+class Workspace(tk.Frame):
+    &#34;&#34;&#34; Workspace of the Application &#34;&#34;&#34;
+    def __init__(self, parent, controller):
+        super().__init__(parent)
+        self.controller = controller
+
+        # btn_start = tk.Label(text=&#34;Center of Workspace&#34;)
+        # btn_start.grid(row=2, column=0, rowspan=13, columnspan=6)
+
+        # IMAGE SELECTOR SECTION ------------------------------
+        step1 = tk.Label(text=&#34;Step 1: Input Image&#34;)
+        step1.grid(row=2, column=1)
+
+        self.step1_path = tk.Entry()
+        self.step1_path.grid(row=2, column=2, columnspan=2, sticky=&#39;ew&#39;)
+
+        self.step1_btn = tk.Button(text=&#34;Select File&#34;)
+        self.step1_btn.config(command=self.image_selector)
+        self.step1_btn.grid(row=2, column=4)
+
+        # SEPARATOR 
+        # ttk.Separator(orient=VERTICAL).grid(column=2, row=4, rowspan=10, sticky=&#39;ns&#39;)
+
+        # ENCODER Section -------------------------------------
+        encode_header = tk.Label(text=&#34;ENCODE&#34;)
+        encode_header.config(font=(&#39;Verdana&#39;,14,&#39;bold&#39;))
+        encode_header.grid(row=3, column=0, columnspan=3, sticky=&#39;s&#39;)
+
+
+        step2_enc = tk.Label(text=&#34;Step 2&#34;)
+        step2_enc.grid(row=4, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        step2_enc_info = tk.Label(text=&#34;Enter text to hide&#34;)
+        step2_enc_info.grid(row=5, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        self.encode_data.grid(row=6,column=0, rowspan=4, columnspan=3, **PADDINGS) #   
+
+        step3 = tk.Label(text=&#34;Step 3&#34;)
+        step3.grid(row=10, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        step3_info = tk.Label(text=&#34;Enter Password&#34;)
+    
+        step3_info.grid(row=11, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.pwd_enc = tk.Entry()
+        self.pwd_enc.config(show=&#39;*&#39;)
+        self.pwd_enc.grid(row=11, column=1, columnspan=2, sticky=&#39;w&#39;, **PADDINGS)
+
+        # ROW:12 COLUMN:(0,1,2) --&gt; ADD PROGRESS BAR
+
+        encode_btn = tk.Button(text=&#34;Encode and Save&#34;)
+        encode_btn.config(font=8)
+        encode_btn.config(command=self.save_encode)
+        encode_btn.grid(row=13, rowspan=2, column=0, columnspan=3, sticky=&#39;ns&#39;)
+        
+
+
+        # DECODER Section -------------------------------------
+        decode_header = tk.Label(text=&#34;DECODE&#34;)
+        decode_header.config(font=(&#39;Verdana&#39;,14,&#39;bold&#39;))
+        decode_header.grid(row=3, column=3, columnspan=3, sticky=&#39;s&#39;)
+
+        step2_dec = tk.Label(text=&#34;Step 2&#34;)
+        step2_dec.grid(row=4, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        step2_dec_info = tk.Label(text=&#34;Enter Password&#34;)
+        step2_dec_info.grid(row=5, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.pwd_dec = tk.Entry()
+        self.pwd_dec.config(show=&#39;*&#39;)
+        self.pwd_dec.grid(row=5, column=4, columnspan=2, sticky=&#39;ew&#39;, **PADDINGS)
+
+        decode_btn = tk.Button(text=&#34;Decode&#34;)
+        decode_btn.config(font=8)
+        decode_btn.config(command=self.decode)
+        decode_btn.grid(row=6, column=4, sticky=&#39;ns&#39;)
+
+        # ROW:7 COLUMNS:(3,4,5) ---&gt; ADD PROGRESS BAR
+
+        dec_info = tk.Label(text=&#34;Decoded data&#34;)
+        dec_info.grid(row=8, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.dec_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        self.dec_data.grid(row=10, column=3, rowspan=4,columnspan=3,sticky=&#39;w&#39;, **PADDINGS ) # 
+
+
+
+
+
+    def image_selector(self):
+        self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+        FILE_TYPES = ([(&#39;Image Files&#39;,(&#39;.png&#39;,&#39;.jpg&#39;,&#39;.jpeg&#39;))])
+        self.img_path = filedialog.askopenfilename(filetypes = FILE_TYPES)
+        if not self.img_path:
+            messagebox.showwarning(&#34;No Image found&#34;, &#34;Please select an image&#34;)
+        else:
+            self.step1_path.insert(&#39;0&#39;,self.img_path)
+            return self.step1_path
+
+    def save_encode(self):
+        # self.step1_path = tk.Entry()
+        # self.encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        # self.pwd_enc = tk.Entry()
+        self.enc_img = filedialog.asksaveasfilename(title=&#39;Save file&#39;) # filetypes=[(&#34;PNG&#34;, &#34;.png&#34;)]
+        self.enc_img = self.enc_img+&#39;.png&#39;
+        try:
+            core.encode_img(
+                self.step1_path.get(),
+                self.encode_data.get(&#34;1.0&#34;,&#34;end-1c&#34;),
+                self.enc_img,
+                self.pwd_enc.get()
+            )
+            messagebox.showinfo(
+                title=&#34;Encode SUCCESS&#34;,
+                message=&#34;Encoded image generated successfully.\nYay!&#34;
+            )
+
+            self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+            self.encode_data.delete(&#34;1.0&#34;, &#34;end&#34;)
+            self.pwd_enc.delete(&#39;0&#39;,&#39;end&#39;)
+        
+        except core.DataOverflowError:
+            messagebox.showwarning(
+                title=&#34;Data Overflow&#34;,
+                message=&#34;Data size is too big to fit inside this image&#34;
+            )
+
+        except core.ReadImageError:
+            messagebox.showerror(
+                title=&#34;No Image Selected&#34;,
+                message=&#34;Please select a source image to hide data.&#34;
+
+            )
+
+
+    
+    def decode(self):
+        # self.pwd_dec = tk.Entry()
+        self.dec_data.delete(&#34;1.0&#34;,&#34;end&#34;)
+        if not self.step1_path.get().endswith(&#39;.png&#39;):
+            messagebox.showinfo(
+                &#34;Incorrect Image&#34;,
+                &#34;Please select the valid image to decode\nPNG format image.&#34;
+            )
+            self.step1_path.delete(&#39;0&#39;,&#39;end&#39;)
+        else:
+            try:
+                self.dec_data.insert(
+                    &#34;1.0&#34;, 
+                    core.decode_img(self.step1_path.get(), self.pwd_dec.get())
+                )
+                messagebox.showinfo(
+                    title=&#34;Decode SUCCESS&#34;,
+                    message=&#34;Data extracted successfully from the image.\nYay!&#34;
+                )
+
+            except core.PasswordError:
+                messagebox.showerror(
+                    title=&#34;Incorrect Credentials&#34;,
+                    message=&#34;Please ensure correct image and correct password is entered.&#34;
+                )
+                self.pwd_dec.delete(&#39;0&#39;, &#39;end&#39;)
+
+            except core.ReadImageError:
+                messagebox.showerror(
+                    title=&#34;No Image Selected&#34;,
+                    message=&#34;Please select an image to decode&#34;
+                )
+
+def graphical_user_interface():
+    app = SoluteApp()
+    app.run()
+
+
+
+
+# APP TRIGGER -------------------------------------------------
+if __name__==&#39;__main__&#39;:
+    graphical_user_interface()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="solute.solute_gui.graphical_user_interface"><code class="name flex">
+<span>def <span class="ident">graphical_user_interface</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def graphical_user_interface():
+    app = SoluteApp()
+    app.run()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="solute.solute_gui.SoluteApp"><code class="flex name class">
+<span>class <span class="ident">SoluteApp</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Root Window of application </p>
+<p>Return a new Toplevel widget on screen SCREENNAME. A new Tcl interpreter will
+be created. BASENAME will be used for the identification of the profile file (see
+readprofile).
+It is constructed from sys.argv[0] without extensions if None is given. CLASSNAME
+is the name of the widget class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SoluteApp(tk.Tk):
+    &#34;&#34;&#34; Root Window of application &#34;&#34;&#34;
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Root page configuration -----------------------------
+        self.geometry(&#39;800x600&#39;)
+        self.minsize(width=650, height=550)
+        
+        self.style = ttk.Style(self)
+        self.style.theme_use(&#39;winnative&#39;)
+
+        self.title(&#34;Solute&#34;)
+        self.protocol(&#34;WM_DELETE_WINDOW&#34;, self.exit)
+
+
+        # Layout Configuration --------------------------------
+        DIMENSIONS = {&#34;Rows&#34;:16, &#34;Columns&#34;:6}
+        for r in range(DIMENSIONS[&#39;Rows&#39;]):
+            if r==2 or r==3:
+                self.grid_rowconfigure(r, weight=1, pad=30)
+            self.grid_rowconfigure(r, weight=1, minsize=2)
+        for c in range(DIMENSIONS[&#39;Columns&#39;]):
+            self.grid_columnconfigure(c, weight=1, minsize=2)
+
+            
+        # Icon section ----------------------------------------
+        self.iconbitmap(&#39;assets/favicon_solute.ico&#39;)
+
+
+        # Menubar Section -------------------------------------
+        menubar = Menu(self)
+        file = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label=&#34;Help&#34;, menu=file)
+        file.add_command(label=&#34;About&#34;, command=self.developer_info)
+        self.config(menu=menubar)
+
+
+        # Header Section --------------------------------------
+        HEADER = &#34;SOLUTE&#34;
+        header = tk.Label(self)
+        header.config(text=HEADER)
+        header.config(font=(&#39;Verdana&#39;,16))
+        header.config(pady=1)
+        header.grid(row=0, column=0, columnspan=6, sticky=&#39;nsew&#39;)
+
+
+        # Tagline section -------------------------------------
+        TAG_LINE = &#34;--- Simplified steganography tool for your data privacy ---&#34;
+        tagline = tk.Label(self)
+        tagline.config(text=TAG_LINE)
+        # tagline.config(font=(&#39;Verdana&#39;,12))
+        tagline.grid(row=1, column=0, columnspan=6, sticky=&#39;n&#39;)
+         
+        
+        # Workspace Area --------------------------------------
+        # Configure container inside root window 
+        # Container frame serves pages
+        container = tk.Frame(self)
+        container.grid(row=2, column=0, rowspan=13, columnspan=6)
+
+        self.frames = {}
+        self.pages = [Workspace]
+        for F in self.pages:    
+            # IF_CASE: F=Workspace() ==&gt; page_name=F.__class__.__name__
+            # THIS_CASE: F = Workspace
+            page_name = F.__name__ 
+            frame = F(parent=container, controller=self)
+            self.frames[page_name] = frame
+
+        # Display Starting page in container
+        self.show_frame(&#34;Workspace&#34;)
+
+
+        # Footer section --------------------------------------
+        FOOTER = &#34;Developed by [ SathvikPN ]&#34;
+        footer = tk.Label(self)
+        footer.config(text=FOOTER)
+        footer.grid(row=15, column=0, columnspan=6, sticky=&#39;s&#39;)
+
+
+    def show_frame(self, page_name):
+        &#34;&#34;&#34; Display passed page 
+        
+        Multiple pages are stacked at same container
+        raises passed page to top of stack which is displayed
+        &#34;&#34;&#34;
+        frame = self.frames[page_name]
+        frame.tkraise()
+
+    def developer_info(self):
+        messagebox.showinfo(
+            &#34;Developer Info&#34;,
+            &#34;[Name] SathvikPN\n[GitHub] https://github.com/SathvikPN/Solute&#34;
+        )
+
+
+    def exit(self):
+        # Exit Confirmation Message box
+        TITLE = &#34;Exit&#34;
+        MESSAGE = &#34;Are you sure want to exit?&#34;
+
+        sure = messagebox.askyesno(TITLE, MESSAGE )
+        if sure is True:
+            self.destroy()
+
+
+    def run(self):
+        self.mainloop()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tkinter.Tk</li>
+<li>tkinter.Misc</li>
+<li>tkinter.Wm</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="solute.solute_gui.SoluteApp.developer_info"><code class="name flex">
+<span>def <span class="ident">developer_info</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def developer_info(self):
+    messagebox.showinfo(
+        &#34;Developer Info&#34;,
+        &#34;[Name] SathvikPN\n[GitHub] https://github.com/SathvikPN/Solute&#34;
+    )</code></pre>
+</details>
+</dd>
+<dt id="solute.solute_gui.SoluteApp.exit"><code class="name flex">
+<span>def <span class="ident">exit</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def exit(self):
+    # Exit Confirmation Message box
+    TITLE = &#34;Exit&#34;
+    MESSAGE = &#34;Are you sure want to exit?&#34;
+
+    sure = messagebox.askyesno(TITLE, MESSAGE )
+    if sure is True:
+        self.destroy()</code></pre>
+</details>
+</dd>
+<dt id="solute.solute_gui.SoluteApp.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self):
+    self.mainloop()</code></pre>
+</details>
+</dd>
+<dt id="solute.solute_gui.SoluteApp.show_frame"><code class="name flex">
+<span>def <span class="ident">show_frame</span></span>(<span>self, page_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display passed page </p>
+<p>Multiple pages are stacked at same container
+raises passed page to top of stack which is displayed</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show_frame(self, page_name):
+    &#34;&#34;&#34; Display passed page 
+    
+    Multiple pages are stacked at same container
+    raises passed page to top of stack which is displayed
+    &#34;&#34;&#34;
+    frame = self.frames[page_name]
+    frame.tkraise()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="solute.solute_gui.Workspace"><code class="flex name class">
+<span>class <span class="ident">Workspace</span></span>
+<span>(</span><span>parent, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Workspace of the Application </p>
+<p>Construct a frame widget with the parent MASTER.</p>
+<p>Valid resource names: background, bd, bg, borderwidth, class,
+colormap, container, cursor, height, highlightbackground,
+highlightcolor, highlightthickness, relief, takefocus, visual, width.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Workspace(tk.Frame):
+    &#34;&#34;&#34; Workspace of the Application &#34;&#34;&#34;
+    def __init__(self, parent, controller):
+        super().__init__(parent)
+        self.controller = controller
+
+        # btn_start = tk.Label(text=&#34;Center of Workspace&#34;)
+        # btn_start.grid(row=2, column=0, rowspan=13, columnspan=6)
+
+        # IMAGE SELECTOR SECTION ------------------------------
+        step1 = tk.Label(text=&#34;Step 1: Input Image&#34;)
+        step1.grid(row=2, column=1)
+
+        self.step1_path = tk.Entry()
+        self.step1_path.grid(row=2, column=2, columnspan=2, sticky=&#39;ew&#39;)
+
+        self.step1_btn = tk.Button(text=&#34;Select File&#34;)
+        self.step1_btn.config(command=self.image_selector)
+        self.step1_btn.grid(row=2, column=4)
+
+        # SEPARATOR 
+        # ttk.Separator(orient=VERTICAL).grid(column=2, row=4, rowspan=10, sticky=&#39;ns&#39;)
+
+        # ENCODER Section -------------------------------------
+        encode_header = tk.Label(text=&#34;ENCODE&#34;)
+        encode_header.config(font=(&#39;Verdana&#39;,14,&#39;bold&#39;))
+        encode_header.grid(row=3, column=0, columnspan=3, sticky=&#39;s&#39;)
+
+
+        step2_enc = tk.Label(text=&#34;Step 2&#34;)
+        step2_enc.grid(row=4, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        step2_enc_info = tk.Label(text=&#34;Enter text to hide&#34;)
+        step2_enc_info.grid(row=5, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        self.encode_data.grid(row=6,column=0, rowspan=4, columnspan=3, **PADDINGS) #   
+
+        step3 = tk.Label(text=&#34;Step 3&#34;)
+        step3.grid(row=10, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        step3_info = tk.Label(text=&#34;Enter Password&#34;)
+    
+        step3_info.grid(row=11, column=0, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.pwd_enc = tk.Entry()
+        self.pwd_enc.config(show=&#39;*&#39;)
+        self.pwd_enc.grid(row=11, column=1, columnspan=2, sticky=&#39;w&#39;, **PADDINGS)
+
+        # ROW:12 COLUMN:(0,1,2) --&gt; ADD PROGRESS BAR
+
+        encode_btn = tk.Button(text=&#34;Encode and Save&#34;)
+        encode_btn.config(font=8)
+        encode_btn.config(command=self.save_encode)
+        encode_btn.grid(row=13, rowspan=2, column=0, columnspan=3, sticky=&#39;ns&#39;)
+        
+
+
+        # DECODER Section -------------------------------------
+        decode_header = tk.Label(text=&#34;DECODE&#34;)
+        decode_header.config(font=(&#39;Verdana&#39;,14,&#39;bold&#39;))
+        decode_header.grid(row=3, column=3, columnspan=3, sticky=&#39;s&#39;)
+
+        step2_dec = tk.Label(text=&#34;Step 2&#34;)
+        step2_dec.grid(row=4, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        step2_dec_info = tk.Label(text=&#34;Enter Password&#34;)
+        step2_dec_info.grid(row=5, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.pwd_dec = tk.Entry()
+        self.pwd_dec.config(show=&#39;*&#39;)
+        self.pwd_dec.grid(row=5, column=4, columnspan=2, sticky=&#39;ew&#39;, **PADDINGS)
+
+        decode_btn = tk.Button(text=&#34;Decode&#34;)
+        decode_btn.config(font=8)
+        decode_btn.config(command=self.decode)
+        decode_btn.grid(row=6, column=4, sticky=&#39;ns&#39;)
+
+        # ROW:7 COLUMNS:(3,4,5) ---&gt; ADD PROGRESS BAR
+
+        dec_info = tk.Label(text=&#34;Decoded data&#34;)
+        dec_info.grid(row=8, column=3, sticky=&#39;w&#39;, **PADDINGS)
+
+        self.dec_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        self.dec_data.grid(row=10, column=3, rowspan=4,columnspan=3,sticky=&#39;w&#39;, **PADDINGS ) # 
+
+
+
+
+
+    def image_selector(self):
+        self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+        FILE_TYPES = ([(&#39;Image Files&#39;,(&#39;.png&#39;,&#39;.jpg&#39;,&#39;.jpeg&#39;))])
+        self.img_path = filedialog.askopenfilename(filetypes = FILE_TYPES)
+        if not self.img_path:
+            messagebox.showwarning(&#34;No Image found&#34;, &#34;Please select an image&#34;)
+        else:
+            self.step1_path.insert(&#39;0&#39;,self.img_path)
+            return self.step1_path
+
+    def save_encode(self):
+        # self.step1_path = tk.Entry()
+        # self.encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+        # self.pwd_enc = tk.Entry()
+        self.enc_img = filedialog.asksaveasfilename(title=&#39;Save file&#39;) # filetypes=[(&#34;PNG&#34;, &#34;.png&#34;)]
+        self.enc_img = self.enc_img+&#39;.png&#39;
+        try:
+            core.encode_img(
+                self.step1_path.get(),
+                self.encode_data.get(&#34;1.0&#34;,&#34;end-1c&#34;),
+                self.enc_img,
+                self.pwd_enc.get()
+            )
+            messagebox.showinfo(
+                title=&#34;Encode SUCCESS&#34;,
+                message=&#34;Encoded image generated successfully.\nYay!&#34;
+            )
+
+            self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+            self.encode_data.delete(&#34;1.0&#34;, &#34;end&#34;)
+            self.pwd_enc.delete(&#39;0&#39;,&#39;end&#39;)
+        
+        except core.DataOverflowError:
+            messagebox.showwarning(
+                title=&#34;Data Overflow&#34;,
+                message=&#34;Data size is too big to fit inside this image&#34;
+            )
+
+        except core.ReadImageError:
+            messagebox.showerror(
+                title=&#34;No Image Selected&#34;,
+                message=&#34;Please select a source image to hide data.&#34;
+
+            )
+
+
+    
+    def decode(self):
+        # self.pwd_dec = tk.Entry()
+        self.dec_data.delete(&#34;1.0&#34;,&#34;end&#34;)
+        if not self.step1_path.get().endswith(&#39;.png&#39;):
+            messagebox.showinfo(
+                &#34;Incorrect Image&#34;,
+                &#34;Please select the valid image to decode\nPNG format image.&#34;
+            )
+            self.step1_path.delete(&#39;0&#39;,&#39;end&#39;)
+        else:
+            try:
+                self.dec_data.insert(
+                    &#34;1.0&#34;, 
+                    core.decode_img(self.step1_path.get(), self.pwd_dec.get())
+                )
+                messagebox.showinfo(
+                    title=&#34;Decode SUCCESS&#34;,
+                    message=&#34;Data extracted successfully from the image.\nYay!&#34;
+                )
+
+            except core.PasswordError:
+                messagebox.showerror(
+                    title=&#34;Incorrect Credentials&#34;,
+                    message=&#34;Please ensure correct image and correct password is entered.&#34;
+                )
+                self.pwd_dec.delete(&#39;0&#39;, &#39;end&#39;)
+
+            except core.ReadImageError:
+                messagebox.showerror(
+                    title=&#34;No Image Selected&#34;,
+                    message=&#34;Please select an image to decode&#34;
+                )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tkinter.Frame</li>
+<li>tkinter.Widget</li>
+<li>tkinter.BaseWidget</li>
+<li>tkinter.Misc</li>
+<li>tkinter.Pack</li>
+<li>tkinter.Place</li>
+<li>tkinter.Grid</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="solute.solute_gui.Workspace.decode"><code class="name flex">
+<span>def <span class="ident">decode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decode(self):
+    # self.pwd_dec = tk.Entry()
+    self.dec_data.delete(&#34;1.0&#34;,&#34;end&#34;)
+    if not self.step1_path.get().endswith(&#39;.png&#39;):
+        messagebox.showinfo(
+            &#34;Incorrect Image&#34;,
+            &#34;Please select the valid image to decode\nPNG format image.&#34;
+        )
+        self.step1_path.delete(&#39;0&#39;,&#39;end&#39;)
+    else:
+        try:
+            self.dec_data.insert(
+                &#34;1.0&#34;, 
+                core.decode_img(self.step1_path.get(), self.pwd_dec.get())
+            )
+            messagebox.showinfo(
+                title=&#34;Decode SUCCESS&#34;,
+                message=&#34;Data extracted successfully from the image.\nYay!&#34;
+            )
+
+        except core.PasswordError:
+            messagebox.showerror(
+                title=&#34;Incorrect Credentials&#34;,
+                message=&#34;Please ensure correct image and correct password is entered.&#34;
+            )
+            self.pwd_dec.delete(&#39;0&#39;, &#39;end&#39;)
+
+        except core.ReadImageError:
+            messagebox.showerror(
+                title=&#34;No Image Selected&#34;,
+                message=&#34;Please select an image to decode&#34;
+            )</code></pre>
+</details>
+</dd>
+<dt id="solute.solute_gui.Workspace.image_selector"><code class="name flex">
+<span>def <span class="ident">image_selector</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def image_selector(self):
+    self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+    FILE_TYPES = ([(&#39;Image Files&#39;,(&#39;.png&#39;,&#39;.jpg&#39;,&#39;.jpeg&#39;))])
+    self.img_path = filedialog.askopenfilename(filetypes = FILE_TYPES)
+    if not self.img_path:
+        messagebox.showwarning(&#34;No Image found&#34;, &#34;Please select an image&#34;)
+    else:
+        self.step1_path.insert(&#39;0&#39;,self.img_path)
+        return self.step1_path</code></pre>
+</details>
+</dd>
+<dt id="solute.solute_gui.Workspace.save_encode"><code class="name flex">
+<span>def <span class="ident">save_encode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_encode(self):
+    # self.step1_path = tk.Entry()
+    # self.encode_data = tk.Text(height=TEXT_BOX_HEIGHT)
+    # self.pwd_enc = tk.Entry()
+    self.enc_img = filedialog.asksaveasfilename(title=&#39;Save file&#39;) # filetypes=[(&#34;PNG&#34;, &#34;.png&#34;)]
+    self.enc_img = self.enc_img+&#39;.png&#39;
+    try:
+        core.encode_img(
+            self.step1_path.get(),
+            self.encode_data.get(&#34;1.0&#34;,&#34;end-1c&#34;),
+            self.enc_img,
+            self.pwd_enc.get()
+        )
+        messagebox.showinfo(
+            title=&#34;Encode SUCCESS&#34;,
+            message=&#34;Encoded image generated successfully.\nYay!&#34;
+        )
+
+        self.step1_path.delete(&#39;0&#39;, &#39;end&#39;)
+        self.encode_data.delete(&#34;1.0&#34;, &#34;end&#34;)
+        self.pwd_enc.delete(&#39;0&#39;,&#39;end&#39;)
+    
+    except core.DataOverflowError:
+        messagebox.showwarning(
+            title=&#34;Data Overflow&#34;,
+            message=&#34;Data size is too big to fit inside this image&#34;
+        )
+
+    except core.ReadImageError:
+        messagebox.showerror(
+            title=&#34;No Image Selected&#34;,
+            message=&#34;Please select a source image to hide data.&#34;
+
+        )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="solute" href="index.html">solute</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="solute.solute_gui.graphical_user_interface" href="#solute.solute_gui.graphical_user_interface">graphical_user_interface</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="solute.solute_gui.SoluteApp" href="#solute.solute_gui.SoluteApp">SoluteApp</a></code></h4>
+<ul class="">
+<li><code><a title="solute.solute_gui.SoluteApp.developer_info" href="#solute.solute_gui.SoluteApp.developer_info">developer_info</a></code></li>
+<li><code><a title="solute.solute_gui.SoluteApp.exit" href="#solute.solute_gui.SoluteApp.exit">exit</a></code></li>
+<li><code><a title="solute.solute_gui.SoluteApp.run" href="#solute.solute_gui.SoluteApp.run">run</a></code></li>
+<li><code><a title="solute.solute_gui.SoluteApp.show_frame" href="#solute.solute_gui.SoluteApp.show_frame">show_frame</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="solute.solute_gui.Workspace" href="#solute.solute_gui.Workspace">Workspace</a></code></h4>
+<ul class="">
+<li><code><a title="solute.solute_gui.Workspace.decode" href="#solute.solute_gui.Workspace.decode">decode</a></code></li>
+<li><code><a title="solute.solute_gui.Workspace.image_selector" href="#solute.solute_gui.Workspace.image_selector">image_selector</a></code></li>
+<li><code><a title="solute.solute_gui.Workspace.save_encode" href="#solute.solute_gui.Workspace.save_encode">save_encode</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
